@@ -1,3 +1,3 @@
 module.exports = {
-    url: 'mongodb://localhost:27017/mean_stack'
+    url: 'mongodb://localhost:27017/game-of-thrones'
 }
