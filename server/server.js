@@ -14,8 +14,8 @@ app.use('/api', routes);
 
 mongoose.connect(dbConfig.url, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
+    useUnifiedTopology: true
+    // useCreateIndex: true,
 }).then(() => {
     console.log("Successfully connected to the database");
 }).catch(err => {
