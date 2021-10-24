@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+h1, h2, p, label, button {
+    font-family: 'Roboto'
+}
+
+input {
+    border-radius: 10px;
+}

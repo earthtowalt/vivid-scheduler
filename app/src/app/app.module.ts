@@ -3,9 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './home-page/home-page.component';
+import { FormsModule } from '@angular/forms';
 import { appRoutingModule } from './app.routing';
+
+import { HomePageComponent } from './home-page/home-page.component';
 import { CreateProjectPageComponent } from './create-project-page/create-project-page.component';
+
 
 @NgModule({
   declarations: [
