@@ -3,10 +3,12 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 
+/* @import url('https://fonts.googleapis.com/css?family=Roboto');
+
 h1, h2, p, label, button {
     font-family: 'Roboto'
 }
 
 input {
     border-radius: 10px;
-}
+} */
