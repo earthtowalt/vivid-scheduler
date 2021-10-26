@@ -8,15 +8,13 @@ import { appRoutingModule } from './app.routing';
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { CreateProjectPageComponent } from './create-project-page/create-project-page.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    CreateProjectPageComponent,
-    NavBarComponent
+    CreateProjectPageComponent
   ],
   imports: [
     BrowserModule,
