@@ -31,11 +31,11 @@ export class CalendarPageComponent implements OnInit {
   events: CalendarEvent[] = [
     {
       start: startOfDay(new Date()),
-      title: 'First Event',
+      title: 'Project BlackPink',
     },
     {
       start: startOfDay(new Date()),
-      title: 'Second event',
+      title: 'Project NCT',
     }
   ]
 
