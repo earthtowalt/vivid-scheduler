@@ -25,11 +25,13 @@ import { CalendarPageComponent } from './calendar-page/calendar-page.component';
     BrowserModule,
     appRoutingModule,
     HttpClientModule,
+    FormsModule,
 
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
     })
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
