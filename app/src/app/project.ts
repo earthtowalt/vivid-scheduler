@@ -6,6 +6,7 @@ export class Project {
       public owner: string,
       public type: string,
       public startDate: Date,
+      public checkPoints: Array<Date>,
       public description: string
     ) {  }
   
