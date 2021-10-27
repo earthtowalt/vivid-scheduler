@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { MyProject } from '../models/data-models';
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectService {
   constructor(private http: HttpClient) {}
-  rootURL = '/api';
+  rootURL: string = '/api';
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-  getProjects() {
-    return this.http.get(this.rootURL + '/projects');
+  // TODO fix this
+  getProjects(): Observable<any[]> {
+    return this.http.get<any[]>(this.rootURL + '/projects');
   }
 
   addProject(project: any) {

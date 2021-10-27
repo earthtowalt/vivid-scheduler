@@ -11,14 +11,23 @@ import { ProjectService } from '../services/project.service';
 export class CalendarPageComponent implements OnInit {
   constructor(private projectService: ProjectService) {}
 
-  users: any[] = [];
-
+  // TODO fix this
+  projects: any = [];
   getAllProjects() {
-    console.log(this.projectService.getProjects());
+    // console.log(this.projectService.getProjects);
+    // this.projectService.getProjects().subscribe((data: any) => this.projects = [data]);
+    // console.log(this.projects);
+      return this.projectService.getProjects().subscribe((data: {}) => {
+        this.projects = data;
+      });
+
   }
 
   ngOnInit(): void {
+    // console.log(this.projectService.getProjects());
     // this.getAllProjects();
+    this.projectService.getProjects().subscribe(data => this.projects = data);
+    console.log(this.projects);
   }
 
   viewDate: Date = new Date();

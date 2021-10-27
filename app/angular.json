@@ -70,7 +70,7 @@
           "configurations": {
             "production": {
               "browserTarget": "app:build:production",
-              "proxyConfig": "proxy.conf.json"
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
               "browserTarget": "app:build:development"

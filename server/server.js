@@ -39,6 +39,7 @@ app.get("/", (req, res) => res.send("Welcome!"));
 app.get("/api/projects", function (req, res) {
   Project.find(function (err, projects) {
     if (err) res.send(err);
+    console.log(projects);
     res.json(projects); // return all projects in JSON format
   });
 });
