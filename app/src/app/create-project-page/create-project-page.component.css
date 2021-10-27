@@ -1,5 +1,19 @@
 
 
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+h1, h2, p, label, button {
+    font-family: 'Roboto'
+}
+
+input {
+    border-radius: 10px;
+}
+
+.heading {
+    padding: 15px;
+}
+
 .form-container {
     padding-left: 30px;
     display: grid;
@@ -15,14 +29,14 @@
 
 .form-control {
     width: 446px;
-    height: 20px;
+    height: 32.5px;
     padding: 5px;
     border: 1px solid;
 }
 
 .form-description {
     width: 550px;
-    height: 60px;
+    height: 80px;
 }
 
 div + div {
@@ -41,6 +55,6 @@ div + div {
 }
 
 .project-select {
-    height: 30px;
-    border-radius: 5px;
+    height: 35px;
+    border-radius: 10px;
 }
