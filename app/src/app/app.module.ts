@@ -24,13 +24,14 @@ import { CalendarPageComponent } from './calendar-page/calendar-page.component';
   imports: [
     BrowserModule,
     appRoutingModule,
+    HttpClientModule,
+    FormsModule,
 
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
-    }),
-    FormsModule,
-    HttpClientModule
+    })
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

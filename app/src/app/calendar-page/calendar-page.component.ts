@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
 import { startOfDay } from 'date-fns';
+import { ProjectService } from '../services/project.service';
 
 @Component({
   selector: 'app-calendar-page',
   templateUrl: './calendar-page.component.html',
-  styleUrls: ['./calendar-page.component.css']
+  styleUrls: ['./calendar-page.component.css'],
 })
 export class CalendarPageComponent implements OnInit {
+  constructor(private projectService: ProjectService) {}
 
-  constructor() { }
+  // TODO fix this - it doesn't work rn
+  projects: any = [];
+  getAllProjects() {
+      return this.projectService.getProjects().subscribe((data: {}) => {
+        this.projects = data;
+      });
+
+  }
 
   ngOnInit(): void {
   }
@@ -18,14 +27,13 @@ export class CalendarPageComponent implements OnInit {
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
 
-
   setView(view: CalendarView) {
     this.view = view;
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     console.log(date);
-    //implement some modal to pop up 
+    //implement some modal to pop up
   }
 
   events: CalendarEvent[] = [
@@ -40,4 +48,3 @@ export class CalendarPageComponent implements OnInit {
   ]
 
 }
-
