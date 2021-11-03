@@ -10,7 +10,7 @@ export class ProjectService {
   rootURL: string = '/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-  // TODO fix this
+  // TODO fix this - doesn't work rn
   getProjects(): Observable<any[]> {
     return this.http.get<any[]>(this.rootURL + '/projects');
   }

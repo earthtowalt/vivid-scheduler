@@ -11,12 +11,9 @@ import { ProjectService } from '../services/project.service';
 export class CalendarPageComponent implements OnInit {
   constructor(private projectService: ProjectService) {}
 
-  // TODO fix this
+  // TODO fix this - it doesn't work rn
   projects: any = [];
   getAllProjects() {
-    // console.log(this.projectService.getProjects);
-    // this.projectService.getProjects().subscribe((data: any) => this.projects = [data]);
-    // console.log(this.projects);
       return this.projectService.getProjects().subscribe((data: {}) => {
         this.projects = data;
       });
@@ -24,10 +21,6 @@ export class CalendarPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log(this.projectService.getProjects());
-    // this.getAllProjects();
-    this.projectService.getProjects().subscribe(data => this.projects = data);
-    console.log(this.projects);
   }
 
   viewDate: Date = new Date();
@@ -45,11 +38,11 @@ export class CalendarPageComponent implements OnInit {
 
   events: CalendarEvent[] = [
     {
-      start: startOfDay(new Date()),
+      start: startOfDay(new Date('October 15, 2021')),
       title: 'First Event',
     },
     {
-      start: startOfDay(new Date()),
+      start: startOfDay(new Date('October 29, 2021')),
       title: 'Second event',
     },
   ];
