@@ -26,13 +26,7 @@ export class CalendarPageComponent implements OnInit {
   closeResult:string;
   projects: Project[];
 
-  //TODO FIX: for some reason it won't work unless i have an event in here?
-  events: CalendarEvent[] = [
-    {
-      start: startOfDay(new Date()),
-      title: 'Project NCT',
-    }
-  ]
+  events: CalendarEvent[] = []
 
   constructor(
     private httpClient: HttpClient,
@@ -77,11 +71,23 @@ export class CalendarPageComponent implements OnInit {
   //Handles modal opening 
   open(content: any, { date, events }: { date: Date; events: CalendarEvent[] }) {
     this.dateClickedOn = date;
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+
+    // Checking if there are events on the day the user is clicking in
+    let isEvent = false;
+    for(let event of events){
+      if (event.start.getTime() == this.dateClickedOn.getTime()){
+        isEvent = true;
+      }
+    }
+
+    // Only showing the modal if there are events on that day 
+    if (isEvent){
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
   }
 
   //Handles modal dismissing 
