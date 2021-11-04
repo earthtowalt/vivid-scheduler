@@ -47,15 +47,11 @@
       <h4 class="modal-title" id="modal-basic-title">Events</h4>
     </div>
     <div class="modal-body">
-      <form>
-        <div class="form-group">
-          <div class="input-group">
-            <div class="input-group-append">
-                This is the modal
-            </div>
-          </div>
-        </div>
-      </form>
+        <ul *ngFor="let data of events" class="horizontal">
+            <ng-container *ngIf="data != undefined && data.start.getTime() == dateClickedOn.getTime()">
+                <li>{{data.title}}</li>
+            </ng-container>
+       </ul>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Done</button>

@@ -27,7 +27,6 @@ export class CalendarPageComponent implements OnInit {
   projects: Project[];
 
   events: CalendarEvent[] = [
-
     {
       start: startOfDay(new Date()),
       title: 'Project NCT',
@@ -48,9 +47,12 @@ export class CalendarPageComponent implements OnInit {
         console.log(response);
         this.projects = response;
         for (let x of this.projects){
+          var projDate = new Date(x.startDate);
+          projDate.setHours(0, 0, 0, 0);
+
           this.events = [
             ...this.events, {
-            start: new Date(x.startDate),
+            start: new Date(projDate),
             title: x.title
             }
           ]
@@ -63,6 +65,7 @@ export class CalendarPageComponent implements OnInit {
   viewDate: Date = new Date();
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
+  dateClickedOn: Date = new Date();
 
   setView(view: CalendarView) {
     this.view = view;
@@ -76,6 +79,7 @@ export class CalendarPageComponent implements OnInit {
 
   //TO DO: Put info about events in here 
   open(content: any, { date, events }: { date: Date; events: CalendarEvent[] }) {
+    this.dateClickedOn = date;
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
