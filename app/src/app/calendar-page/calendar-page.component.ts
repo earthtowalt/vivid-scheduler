@@ -26,6 +26,7 @@ export class CalendarPageComponent implements OnInit {
   closeResult:string;
   projects: Project[];
 
+  //TODO FIX: for some reason it won't work unless i have an event in here?
   events: CalendarEvent[] = [
     {
       start: startOfDay(new Date()),
@@ -41,6 +42,7 @@ export class CalendarPageComponent implements OnInit {
     this.getProjects();
   }
 
+  //Retrieves the projdata from the DB and populates them into an array of events
   getProjects(){
     this.httpClient.get<any>('http://localhost:4200/api/projects').subscribe(
       response => {
@@ -67,17 +69,12 @@ export class CalendarPageComponent implements OnInit {
   CalendarView = CalendarView;
   dateClickedOn: Date = new Date();
 
+  //Sets the view of the calendar (daily, monthly, weekly)
   setView(view: CalendarView) {
     this.view = view;
   }
 
-  /*
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    //implement some modal to pop up
-  }
-  */
-
-  //TO DO: Put info about events in here 
+  //Handles modal opening 
   open(content: any, { date, events }: { date: Date; events: CalendarEvent[] }) {
     this.dateClickedOn = date;
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -87,6 +84,7 @@ export class CalendarPageComponent implements OnInit {
     });
   }
 
+  //Handles modal dismissing 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
