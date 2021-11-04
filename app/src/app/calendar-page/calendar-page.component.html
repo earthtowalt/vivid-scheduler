@@ -29,7 +29,7 @@
 
     <div [ngSwitch]="view">
 
-        <mwl-calendar-month-view (dayClicked)="dayClicked($event.day)" *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events">
+        <mwl-calendar-month-view (dayClicked)="open(content, $event.day)" *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events">
         </mwl-calendar-month-view>
     
         <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events">
@@ -41,3 +41,23 @@
     </div>
 
 </div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Events</h4>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-append">
+                This is the modal
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Done</button>
+    </div>
+  </ng-template>

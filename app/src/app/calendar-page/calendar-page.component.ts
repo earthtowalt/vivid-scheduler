@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
 import { startOfDay } from 'date-fns';
 import { Project } from '../project';
@@ -22,7 +23,7 @@ export class CalendarPageComponent implements OnInit {
 //observable
   }
   */
-
+  closeResult:string;
   projects: Project[];
 
   events: CalendarEvent[] = [
@@ -34,7 +35,8 @@ export class CalendarPageComponent implements OnInit {
   ]
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private modalService: NgbModal
   ) { }
   ngOnInit(): void {
     this.getProjects();
@@ -66,9 +68,29 @@ export class CalendarPageComponent implements OnInit {
     this.view = view;
   }
 
+  /*
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    console.log(date)
     //implement some modal to pop up
+  }
+  */
+
+  //TO DO: Put info about events in here 
+  open(content: any, { date, events }: { date: Date; events: CalendarEvent[] }) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 
