@@ -1,0 +1,20 @@
+.body{
+    padding: 20px;
+}
+
+.cal{
+    padding: 50px;
+}
+
+.horizontal {
+    margin: 0;
+    padding: 0;
+}
+
+.horizontal li {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 100px;
+    border: 1px solid #000;
+}
