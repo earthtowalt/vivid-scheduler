@@ -33,7 +33,7 @@ import { CalendarPageComponent } from './calendar-page/calendar-page.component';
     })
     
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

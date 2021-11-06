@@ -2,12 +2,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CalendarPageComponent } from './calendar-page.component';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 describe('CalendarPageComponent', () => {
   let component: CalendarPageComponent;
   let fixture: ComponentFixture<CalendarPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule],
       declarations: [ CalendarPageComponent ]
     })
     .compileComponents();
