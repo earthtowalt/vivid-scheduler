@@ -49,8 +49,7 @@ import { GanttChartPageComponent } from './gantt-chart-page/gantt-chart-page.com
      NgbModule
     
   ],
-  providers: [
-  ],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
