@@ -42,9 +42,14 @@ describe('CreateProjectPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // onSubmit calls correcct service method
-  it('button calls correct service methods', () => {
+  // ensure correct fields
+  it('Should render submit button', () => {
     
+  });
+
+  // onSubmit calls correct service method
+  it('should call createProjectService.addProject', () => {
+
       // create a mock form component
       const mockComponent = new CreateProjectPageComponent(createProjectServiceSpy);
 
@@ -57,21 +62,21 @@ describe('CreateProjectPageComponent', () => {
 
   });
 
-  // enforce required fields
-  it('testing required fields', fakeAsync(() => {
+  // enforce required fields 
+  it('should not submit form with invalid data (not implemented yet)', fakeAsync(() => {
 
     // tick for form controls to register
     tick();
 
     // submit form with bad data
-    component.onSubmit('data');
+    component.onSubmit('invalid data');
 
     expect(component.submitted).toEqual(false);
 
   }));
 
   // test positive case
-  it('testing form submission', fakeAsync(() => {
+  it('should submit form with good data', fakeAsync(() => {
 
     // tick for form controls to register
     tick();
