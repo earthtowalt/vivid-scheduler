@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CreateProjectPageComponent } from './create-project-page/create-project-page.component';
 import { CalendarPageComponent } from './calendar-page/calendar-page.component';
+import { UpdateProjectPageComponent } from './update-project-page/update-project-page.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CalendarPageComponent } from './calendar-page/calendar-page.component';
     AppComponent,
     HomePageComponent,
     CreateProjectPageComponent,
-    CalendarPageComponent
+    CalendarPageComponent,
+    UpdateProjectPageComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/api", routes);
 
+
 mongoose
   .connect(dbConfig.url, {
     useNewUrlParser: true,
@@ -44,20 +45,24 @@ app.get("/api/projects", function (req, res) {
   });
 });
 
-app.post("/api/project", function (req, res) {
-  let project = new Project();
-  let data = req.body();
-  console.log(data);
 
-  project = { title: data.title, startDate: data.startDate };
+app.post("/api/projects", function (req, res) {
+  let data = req.body;
+  let project = new Project();
+
+  project.title = data.pname
+  project.owner = data.powner
+  project.type = data.ptype
+  project.checkPoints = data.checkPoints
+  project.startDate = data.startDate
+  project.description = data.description
+  
+
   project.save(function (err) {
     if (err) {
       res.send(err);
     }
-    res.status(201).send({
-      username: data.username,
-      primary_email: data.primary_email,
-    });
+    res.sendStatus(200);
   });
 });
 
