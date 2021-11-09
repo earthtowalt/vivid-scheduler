@@ -29,7 +29,6 @@ export class CreateProjectPageComponent implements OnInit {
   onSubmit(data: any) {
     this.submitted = true; 
 
-<<<<<<< HEAD
     // create checkpoint list based on startDate
     // increment each checkpoint by 1 week
     let myStartDate = new Date(data.startDate)
@@ -42,11 +41,6 @@ export class CreateProjectPageComponent implements OnInit {
     this.projectModel.pstartDate = data.pstartDate
     this.projectModel.pdescription = data.pdescription
     this.projectModel.checkPoints = data.checkPoints
-=======
-    alert('SUCCESS: ' + this.projectModel.title + 'created')
-    // create checkpoint list based on startDate input, 2 week increment
-    this.projectModel.checkPoints = [this.projectModel.startDate, new Date(this.projectModel.startDate.getDate() + 12096e5)]
->>>>>>> main
 
     // register the new project to server
     this._ProjectService.addProject(data)

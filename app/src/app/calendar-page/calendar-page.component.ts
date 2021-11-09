@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
 import { startOfDay } from 'date-fns';
-import { Project } from '../project';
+import { Project } from '../models/data-models';
 import { ProjectService } from '../services/project.service';
 
 @Component({
@@ -43,13 +43,13 @@ export class CalendarPageComponent implements OnInit {
         console.log(response);
         this.projects = response;
         for (let x of this.projects){
-          var projDate = new Date(x.startDate);
+          var projDate = new Date(x.pstartDate);
           projDate.setHours(0, 0, 0, 0);
 
           this.events = [
             ...this.events, {
             start: new Date(projDate),
-            title: x.title
+            title: x.pname
             }
           ]
         }
