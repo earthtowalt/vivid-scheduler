@@ -12,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CreateProjectPageComponent } from './create-project-page/create-project-page.component';
 import { CalendarPageComponent } from './calendar-page/calendar-page.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -31,8 +30,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
-    }),
-     NgbModule
+    })
     
   ],
   providers: [],

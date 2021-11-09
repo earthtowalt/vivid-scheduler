@@ -23,7 +23,7 @@ export class CreateProjectPageComponent implements OnInit {
   onSubmit(data: any) {
     this.submitted = true; 
 
-    alert('SUCCESS: ' + this.projectModel.title + 'created')
+    alert('SUCCESS: ' + this.projectModel.name + 'created')
     // create checkpoint list based on startDate input, 2 week increment
     this.projectModel.checkPoints = [this.projectModel.startDate, new Date(this.projectModel.startDate.getDate() + 12096e5)]
 
