@@ -2,36 +2,32 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
-import { startOfDay } from 'date-fns';
-import { Project } from '../models/data-models';
-import { ProjectService } from '../services/project.service';
+import { Project } from '../project';
 
 @Component({
   selector: 'app-calendar-page',
   templateUrl: './calendar-page.component.html',
   styleUrls: ['./calendar-page.component.css'],
 })
+
 export class CalendarPageComponent implements OnInit {
-  /*
-  constructor(private projectService: ProjectService) {}
-  // TODO fix this - it doesn't work rn
-  projects: any = [];
-  getAllProjects() {
-      return this.projectService.getProjects().subscribe((data: {}) => {
-        this.projects = data;
-      });
-//observable
-  }
-  */
+
+  //Will hold the value of why the modal was closed 
   closeResult:string;
+
+  //Will hold all of the projects coming from the database 
   projects: Project[];
 
+  //Will hold all of the project deadlines/dates  
   events: CalendarEvent[] = []
 
   constructor(
     private httpClient: HttpClient,
     private modalService: NgbModal
-  ) { }
+  ) {
+    this.closeResult = "";
+    this.projects = [];
+   }
   ngOnInit(): void {
     this.getProjects();
   }
@@ -41,11 +37,15 @@ export class CalendarPageComponent implements OnInit {
     this.httpClient.get<any>('http://localhost:4200/api/projects').subscribe(
       response => {
         console.log(response);
-        this.projects = response;
+        this.projects = response;      
+        // map each field of response to the correct field in projects
         for (let x of this.projects){
+          //The client's don't have specific times within the day for deadlines, so we're 
+          // setting the hours to zero so everything is standard. 
           var projDate = new Date(x.pstartDate);
           projDate.setHours(0, 0, 0, 0);
 
+          //Adding onto our array of events
           this.events = [
             ...this.events, {
             start: new Date(projDate),
@@ -57,10 +57,13 @@ export class CalendarPageComponent implements OnInit {
     );
   }
 
-
   viewDate: Date = new Date();
+
+  //Holds the value of which view (Monthly, weekly, daily) the user has chosen for hte calendar
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
+
+  //Holds the value of what date the user is clicking on the calendar 
   dateClickedOn: Date = new Date();
 
   //Sets the view of the calendar (daily, monthly, weekly)
@@ -68,7 +71,7 @@ export class CalendarPageComponent implements OnInit {
     this.view = view;
   }
 
-  //Handles modal opening 
+  //Handles modal opening. The modal will display all the project deadlines associated with that day.
   open(content: any, { date, events }: { date: Date; events: CalendarEvent[] }) {
     this.dateClickedOn = date;
 
@@ -100,7 +103,4 @@ export class CalendarPageComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-
-
-
 }

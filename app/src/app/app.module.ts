@@ -33,8 +33,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
-    }),
-     NgbModule
+    })
     
   ],
   providers: [],
