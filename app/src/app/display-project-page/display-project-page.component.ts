@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HomePageComponent } from '../home-page/home-page.component';
 import { Checkpoint, Project } from '../models/data-models';
 import { ProjectService } from '../services/project.service';
 
@@ -12,9 +12,11 @@ export class DisplayProjectPageComponent implements OnInit {
   
   projects: Array<String>;
 
-  constructor(private httpClient: HttpClient,) { 
+  constructor(
+    private _ProjectService: ProjectService) { 
+
     this.projects = [];
-    this.httpClient.get<any>('http://localhost:4200/api/projects').subscribe(
+    this._ProjectService.getProjects().subscribe(
       response => {
         console.log(response);
         // add project names into projects list
@@ -30,6 +32,7 @@ export class DisplayProjectPageComponent implements OnInit {
 
   onSubmit(data:any) {
     console.log('project submitted for display!', data);
+    // call function that adds project to the list of projects in home page
   }
 
 }

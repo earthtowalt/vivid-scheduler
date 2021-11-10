@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  projects: Array<any>;
+
+  constructor() { 
+    this.projects = [];
+  }
 
   ngOnInit(): void {
   }
 
+  // adds a new project to home page
+  // each project contains project name and url video link
+  addNewProject(newProject: any) {
+    this.projects.push(newProject)
+  }
+
 }
+

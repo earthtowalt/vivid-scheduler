@@ -30,7 +30,7 @@ export class CalendarPageComponent implements OnInit {
   events: MyEvent[] = []
 
   constructor(
-    private httpClient: HttpClient,
+    private _ProjectService: ProjectService,
     private modalService: NgbModal
   ) { }
   ngOnInit(): void {
@@ -39,7 +39,7 @@ export class CalendarPageComponent implements OnInit {
 
   //Retrieves the projdata from the DB and populates them into an array of events
   getProjects(){
-    this.httpClient.get<any>('http://localhost:4200/api/projects').subscribe(
+    this._ProjectService.getProjects().subscribe(
       response => {
         console.log(response);
 
