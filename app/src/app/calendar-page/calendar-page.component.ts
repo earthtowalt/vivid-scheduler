@@ -1,5 +1,4 @@
 //This class is responsible for handling the calendar's behavior.
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarView, CalendarEvent } from 'angular-calendar';

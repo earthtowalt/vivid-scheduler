@@ -3,14 +3,14 @@
     <div class="form-container">
         <div class="form-group">
             <label for="name">Project Name:</label>
-            <select class="form-control project-select" id="type" name="ptype" minlength="1" required>
+            <select class="form-control project-select" id="type" name="ptype" minlength="1" required [(ngModel)]="newProject.pname">
                 <option *ngFor="let projectName of projects" [value]="projectName">{{projectName}}</option>
                 </select>
         </div>
             
         <div class="form-group">
             <label for="owner">Project Video Link:</label>
-            <input type="text" class="form-control" id="owner" name="powner" minlength="1">
+            <input type="text" class="form-control" id="owner" name="powner" minlength="1" [(ngModel)]="newProject.pdescription">
         </div>
 
     </div>
