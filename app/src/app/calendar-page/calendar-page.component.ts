@@ -1,8 +1,17 @@
+//This class is responsible for handling the calendar's behavior.
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
+import { startOfDay } from 'date-fns';
 import { Project } from '../project';
+import { ProjectService } from '../services/project.service';
+
+interface MyEvent extends CalendarEvent {
+  description:string;
+  projectType:string;
+  projectOwner:string;
+}
 
 @Component({
   selector: 'app-calendar-page',
@@ -11,7 +20,6 @@ import { Project } from '../project';
 })
 
 export class CalendarPageComponent implements OnInit {
-
   //Will hold the value of why the modal was closed 
   closeResult:string;
 
@@ -19,15 +27,12 @@ export class CalendarPageComponent implements OnInit {
   projects: Project[];
 
   //Will hold all of the project deadlines/dates  
-  events: CalendarEvent[] = []
+  events: MyEvent[] = []
 
   constructor(
     private httpClient: HttpClient,
     private modalService: NgbModal
-  ) {
-    this.closeResult = "";
-    this.projects = [];
-   }
+  ) { }
   ngOnInit(): void {
     this.getProjects();
   }
@@ -37,25 +42,31 @@ export class CalendarPageComponent implements OnInit {
     this.httpClient.get<any>('http://localhost:4200/api/projects').subscribe(
       response => {
         console.log(response);
-        this.projects = response;      
-        // map each field of response to the correct field in projects
+
+        this.projects = response;
+        console.log(this.projects);
+
         for (let x of this.projects){
           //The client's don't have specific times within the day for deadlines, so we're 
           // setting the hours to zero so everything is standard. 
-          var projDate = new Date(x.pstartDate);
+          var projDate = new Date(x.startDate);
           projDate.setHours(0, 0, 0, 0);
 
           //Adding onto our array of events
           this.events = [
             ...this.events, {
-            start: new Date(projDate),
-            title: x.pname
+            start: new Date(projDate), 
+            title: x.title,
+            description: x.description,
+            projectType: x.type,
+            projectOwner: x.owner
             }
           ]
-        }
+        } 
       }
     );
   }
+
 
   viewDate: Date = new Date();
 
