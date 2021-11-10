@@ -41,15 +41,14 @@ export class CalendarPageComponent implements OnInit {
   getProjects(){
     this.httpClient.get<any>('http://localhost:4200/api/projects').subscribe(
       response => {
-        console.log(response);
-
         this.projects = response;
-        console.log(this.projects);
 
+        console.log(response);
         for (let x of this.projects){
           //The client's don't have specific times within the day for deadlines, so we're 
           // setting the hours to zero so everything is standard. 
           var projDate = new Date(x.startDate);
+          console.log("this is the completed: " + x.completed)
           projDate.setHours(0, 0, 0, 0);
 
           //Adding onto our array of events
