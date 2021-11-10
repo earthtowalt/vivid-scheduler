@@ -1,7 +1,7 @@
 export class Project {
 
     constructor(
-      public id: number,
+      public _id: number,
       public title: string,
       public owner: string,
       public type: string,

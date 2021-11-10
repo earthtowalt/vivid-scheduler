@@ -1,4 +1,4 @@
-<div class="body row text-center">
+<div class="body row text-center" style="margin-top: 20px;">
 
     <div class="col-md-4">
         <div class="btn-group">
@@ -52,8 +52,11 @@
     </div>
     <div class="modal-body">
         <ul *ngFor="let data of events" class="horizontal">
-            <ng-container *ngIf="data != undefined && data.start.getTime() == dateClickedOn.getTime()">
-                <li>{{data.title}}</li>
+            <ng-container *ngIf="data != undefined && data.start.getTime() == dateClickedOn.getTime()" style="color:aqua;">
+                <h2 style="font-size: 20px; margin-left:-30px;"><b>{{data.title}}</b></h2>
+                <li><b>Owner: </b>{{data.projectOwner}}</li>
+                <li><b>Project Type: </b>{{data.projectType}}</li>
+                <li><b>Description: </b>{{data.description}}</li>
             </ng-container>
        </ul>
     </div>
