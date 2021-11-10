@@ -43,13 +43,17 @@ router.post("/project", async (req, res) => {
   // Schema for project info validation
   const schema = Joi.object({
     pname: Joi.string().required(),
-    pstartDate: Joi.date().required(),
+    powner: Joi.string(),
+    ptype: Joi.string(),
+    startDate: Joi.date().required(),
+    checkPoints: Joi.array(),
+    description: Joi.string(),
   });
   try {
     let data = await schema.validateAsync(req.body);
     // add checkpoints
-    const checkpoints = createCheckpoints(data.pstartDate);
-    data = { ...data, pcheckPoints: checkpoints };
+    const checkpoints = createCheckpoints(data.startDate);
+    data = { ...data, checkpoints: checkpoints };
     try {
       const project = new Project(data);
       await project.save();

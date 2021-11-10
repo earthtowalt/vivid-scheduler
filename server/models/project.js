@@ -5,8 +5,8 @@ const Project = new Schema({
   pname: { type: String, required: true, index: { unique: true } },
   powner : {type : String, default: ''},
   ptype : {type : String, default: ''},
-  pstartDate: { type: Date, default: new Date() },
-  pcheckPoints: [{title: String, date: Date}],
+  startDate: { type: Date, default: new Date() },
+  checkpoints: [{title: String, date: Date}],
   description : {type : String, default: ''},
 });
 
