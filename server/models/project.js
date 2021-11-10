@@ -1,12 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
- module.exports = mongoose.model('Project', {
-    title : {type : String, default: ''},
-    owner : {type : String, default: ''},
-    type : {type : String, default: ''},
-    startDate : {type : Date, default: new Date()},
-    checkPoints : {type : Array, default: []},
-    description : {type : String, default: ''}
-    });
+const Project = new Schema({
+  pname: { type: String, required: true, index: { unique: true } },
+  powner : {type : String, default: ''},
+  ptype : {type : String, default: ''},
+  startDate: { type: Date, default: new Date() },
+  checkpoints: [{title: String, date: Date}],
+  description : {type : String, default: ''},
+});
 
-   
+module.exports = mongoose.model("Project", Project);
