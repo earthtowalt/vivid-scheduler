@@ -19,11 +19,20 @@ router.get("/projects", function (req, res) {
 // add checkpoints
 const createCheckpoints = (startDate) => {
   const numWeeks = 2;
-  const titles = ["filming", "rough draft 1", "rough draft 2", "cover photo", "final draft"];
+  const titles = [
+    "filming",
+    "rough draft 1",
+    "rough draft 2",
+    "cover photo",
+    "final draft",
+  ];
   let checkpoints = [];
   titles.forEach((curTitle, i) => {
     const date = new Date(startDate);
-    const temp = { title: curTitle, date: new Date(date.setDate(startDate.getDate() + numWeeks * 7 * i))};
+    const temp = {
+      title: curTitle,
+      date: new Date(date.setDate(startDate.getDate() + numWeeks * 7 * i)),
+    };
     checkpoints.push(temp);
   });
   return checkpoints;
@@ -33,22 +42,22 @@ const createCheckpoints = (startDate) => {
 router.post("/project", async (req, res) => {
   // Schema for project info validation
   const schema = Joi.object({
-    title: Joi.string().required(),
-    startDate: Joi.date().required(),
+    pname: Joi.string().required(),
+    pstartDate: Joi.date().required(),
   });
   try {
     let data = await schema.validateAsync(req.body);
     // add checkpoints
-    const checkpoints = createCheckpoints(data.startDate);
-    data = { ...data, checkpoints: checkpoints };
+    const checkpoints = createCheckpoints(data.pstartDate);
+    data = { ...data, pcheckPoints: checkpoints };
     try {
       const project = new Project(data);
       await project.save();
       console.log(project);
-      res.status(201).send({title: project.title});
+      res.status(201).send({ pname: project.pname });
     } catch (err) {
       console.log(err.message);
-      res.status(400).send({ error: "error" });
+      res.status(400).send({ error: err.message });
     }
   } catch (err) {
     console.log(err);

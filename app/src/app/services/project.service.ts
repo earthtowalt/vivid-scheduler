@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { MyProject } from '../models/data-models';
+import { Project } from '../models/data-models';
+
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectService {
   constructor(private http: HttpClient) {}
-  rootURL: string = '/api';
+  rootURL: string = 'http://localhost:4200/';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-  // TODO fix this - doesn't work rn
+  // retrieve projects from server
   getProjects(): Observable<any[]> {
-    return this.http.get<any[]>(this.rootURL + '/projects');
+    return this.http.get<any[]>(this.rootURL + 'api/projects');
   }
-
-  addProject(project: any) {
-    return this.http.post(this.rootURL + '/project', { project });
+  // send project submission to server   
+  addProject(project: Project) {
+    return this.http.post<any>(this.rootURL+"api/projects", project);
   }
 }
