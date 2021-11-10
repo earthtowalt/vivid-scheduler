@@ -4,9 +4,11 @@ const http = require("http");
 const mongoose = require("mongoose");
 const dbConfig = require("./config/database.config");
 const routes = require("./routes/base.route");
+const logger = require("morgan");
 
 const app = express();
 
+app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

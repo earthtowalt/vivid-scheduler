@@ -55,10 +55,10 @@ export class CalendarPageComponent implements OnInit {
           this.events = [
             ...this.events, {
             start: new Date(projDate), 
-            title: x.title,
+            title: x.pname,
             description: x.description,
-            projectType: x.type,
-            projectOwner: x.owner
+            projectType: x.ptype,
+            projectOwner: x.powner
             }
           ]
         } 
