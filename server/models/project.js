@@ -6,7 +6,9 @@ const mongoose = require('mongoose');
     type : {type : String, default: ''},
     startDate : {type : Date, default: new Date()},
     checkPoints : {type : Array, default: []},
-    description : {type : String, default: ''}
+    description : {type : String, default: ''},
+    completed : {type: String, default: ''},
+    url: {type: String, default: ''}
     });
 
    

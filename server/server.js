@@ -56,6 +56,8 @@ app.post("/api/projects", function (req, res) {
   project.checkPoints = data.checkPoints
   project.startDate = data.startDate
   project.description = data.description
+  project.completed = data.completed
+  project.url = data.url
   
 
   project.save(function (err) {
