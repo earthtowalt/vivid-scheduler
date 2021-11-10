@@ -10,7 +10,7 @@ router.get("/projects", function (req, res) {
   Project.find(function (err, projects) {
     if (err) res.send(err);
     console.log(projects);
-    res.json(projects); // return all projects in JSON format
+    res.status(200).send(projects); // return all projects in JSON format
   });
 });
 
@@ -45,10 +45,10 @@ router.post("/project", async (req, res) => {
       const project = new Project(data);
       await project.save();
       console.log(project);
-      res.status(201).send("Added project!");
+      res.status(201).send({title: project.title});
     } catch (err) {
       console.log(err.message);
-      res.status(400).send({ error: `Duplicate key` });
+      res.status(400).send({ error: "error" });
     }
   } catch (err) {
     console.log(err);
