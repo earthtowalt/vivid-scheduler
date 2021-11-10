@@ -57,7 +57,7 @@ export class CalendarPageComponent implements OnInit {
             ...this.events, {
             start: new Date(projDate), 
             title: x.title,
-            description: x.description,
+            description: x.pdescription,
             projectType: x.type,
             projectOwner: x.owner
             }
