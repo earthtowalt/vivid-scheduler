@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../models/data-models';
 import { ProjectService } from '../services/project.service';
-import { EventEmitterService } from '../services/event-emitter.service';
 
 @Component({
   selector: 'app-display-project-page',
@@ -14,8 +13,7 @@ export class DisplayProjectPageComponent implements OnInit {
   newProject: Project;
 
   constructor(
-    private _ProjectService: ProjectService,
-    private _EventEmitterService: EventEmitterService) { 
+    private _ProjectService: ProjectService,) { 
 
     this.projects = [];
     this._ProjectService.getProjects().subscribe(
@@ -28,7 +26,6 @@ export class DisplayProjectPageComponent implements OnInit {
       }
     );
 
-    this.newProject = new Project(0, '', '', '', new Date(), [], '');
   }
 
   ngOnInit(): void {
@@ -36,7 +33,6 @@ export class DisplayProjectPageComponent implements OnInit {
 
   onSubmit(data:any) {
     console.log('project submitted for display!', data);
-    this._EventEmitterService.onDisplayNewProjectClick(data);
     // call function that adds project to the list of projects in home page
   }
 

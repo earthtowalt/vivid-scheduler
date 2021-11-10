@@ -14,7 +14,6 @@ import { CreateProjectPageComponent } from './create-project-page/create-project
 import { CalendarPageComponent } from './calendar-page/calendar-page.component';
 import { UpdateProjectPageComponent } from './update-project-page/update-project-page.component';
 import { DisplayProjectPageComponent } from './display-project-page/display-project-page.component';
-import { EventEmitterService } from './services/event-emitter.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -41,7 +40,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     
   ],
   providers: [
-    EventEmitterService,
   ],
   bootstrap: [AppComponent]
 })
