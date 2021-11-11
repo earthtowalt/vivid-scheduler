@@ -13,7 +13,9 @@ export class Project {
     public ptype: string, // Instagram Reel, Youtube Video, Tiktok, Other
     public pstartDate: Date,
     public checkPoints: Array<Checkpoint>, // automated 1 week increment
-    public pdescription: string
+    public pdescription: string,
+    public completed: string,
+    public url: string
   ) {  }
 
 }

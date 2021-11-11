@@ -17,6 +17,11 @@ export class ProjectService {
   }
   // send project submission to server   
   addProject(project: Project) {
-    return this.http.post<any>(this.rootURL+"api/projects", project);
+    return this.http.post<any>(this.rootURL+"api/project", project);
+  }
+
+  // update project in server
+  updateProject(projectName: any) {
+    return this.http.put<any>(this.rootURL + 'api/project', projectName);
   }
 }

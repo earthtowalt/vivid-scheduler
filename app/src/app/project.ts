@@ -1,13 +1,15 @@
 export class Project {
 
     constructor(
-      public id: number,
-      public title: string,
-      public owner: string,
-      public type: string,
+      public _id: number,
+      public pname: string,
+      public powner: string,
+      public ptype: string,
       public startDate: Date,
-      public checkPoints: Array<Date>,
-      public pdescription: string
+      public checkpoints: Array<Date>,
+      public description: string,
+      public completed: string,
+      public url: string
     ) {  }
   
   }

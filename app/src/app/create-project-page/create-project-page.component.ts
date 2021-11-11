@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵɵngDeclareClassMetadata } from '@angular/core';
 import { Checkpoint, Project } from '../models/data-models';
 import { ProjectService } from '../services/project.service';
 
@@ -16,11 +16,11 @@ export class CreateProjectPageComponent implements OnInit {
   }
 
   // available project types
-  types = ['Instagram Reel', 'Youtube Video', 'Tiktok', 'Other'];
+  types = ['Instagram Reel', 'Youtube Video', 'TikTok', 'Other'];
 
   // create project object associated with this specific form
   currentTime = new Date()
-  projectModel = new Project(1, '', '', '', this.currentTime, [new Checkpoint('', '', this.currentTime)],'');
+  projectModel = new Project(1, '', '', '', this.currentTime, [new Checkpoint('', '', this.currentTime)],'', 'No', ' ');
 
   submitted = false;
 
@@ -41,6 +41,8 @@ export class CreateProjectPageComponent implements OnInit {
     this.projectModel.pstartDate = data.pstartDate
     this.projectModel.pdescription = data.pdescription
     this.projectModel.checkPoints = data.checkPoints
+    data.completed = 'No'
+    data.url = ' '
 
     // register the new project to server
     this._ProjectService.addProject(data)

@@ -15,6 +15,7 @@ import { CalendarPageComponent } from './calendar-page/calendar-page.component';
 import { UpdateProjectPageComponent } from './update-project-page/update-project-page.component';
 import { DisplayProjectPageComponent } from './display-project-page/display-project-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
-    })
+    }),
+     BrowserAnimationsModule,
+     NgbModule
     
   ],
   providers: [

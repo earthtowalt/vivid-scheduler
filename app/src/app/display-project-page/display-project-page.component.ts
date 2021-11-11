@@ -11,17 +11,20 @@ export class DisplayProjectPageComponent implements OnInit {
   
   projects: Array<String>;
   newProject: Project;
+  projectName: string;
+  projectURL: string;
 
   constructor(
     private _ProjectService: ProjectService,) { 
-
+    this.projectName = '';
+    this.projectURL = ' ';
     this.projects = [];
     this._ProjectService.getProjects().subscribe(
       response => {
         console.log(response);
         // add project names into projects list
         for (let x of response){
-          this.projects.push(x.title);
+          this.projects.push(x.pname);
         } 
       }
     );
@@ -32,8 +35,10 @@ export class DisplayProjectPageComponent implements OnInit {
   }
 
   onSubmit(data:any) {
-    console.log('project submitted for display!', data);
-    // call function that adds project to the list of projects in home page
-  }
+    this._ProjectService.updateProject(data).subscribe(
+      data => console.log(data)
+    )
+  };
+    // update project 
 
 }
