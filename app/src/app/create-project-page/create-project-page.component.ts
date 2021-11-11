@@ -24,10 +24,7 @@ export class CreateProjectPageComponent implements OnInit {
 
   submitted = false;
 
-
-
   onSubmit(data: any) {
-    this.submitted = true; 
 
     // create checkpoint list based on startDate
     // increment each checkpoint by 1 week
@@ -49,6 +46,8 @@ export class CreateProjectPageComponent implements OnInit {
     .subscribe(
       data => console.log(data)
     )
+
+    this.submitted = true; 
 
     // successful project submission
     alert('SUCCESS: ' + data.pname + ' created')
