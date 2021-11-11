@@ -4,17 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "test": "cross-env NODE_ENV=test mocha tests/*.js --timeout 2000",
+    "start": "cross-env NODE_ENV=prod nodemon server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "assert": "^2.0.0",
     "body-parser": "^1.19.0",
+    "chai": "^4.3.4",
     "express": "^4.17.1",
     "joi": "^17.4.2",
+    "mocha": "^9.1.3",
+    "mongodb-memory-server": "^8.0.2",
     "mongoose": "^6.0.12",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.14"
+    "nodemon": "^2.0.14",
+    "should": "^13.2.3",
+    "superagent": "^6.1.0",
+    "supertest": "^6.1.6"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

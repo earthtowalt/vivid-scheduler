@@ -1,28 +1,26 @@
 let mongoose = require('mongoose');
-let MongoMemoryServer = require('mongodb-memory-server').MongoMemoryServer;
 let Project = require('../models/project');
+let dbConfig = require('../config/database.config');
+
 
 let expect = require('chai').expect;
 
 describe('Data Models', () => {
 
-  let mongoServer;
   before(async () => {
-    mongoServer = await MongoMemoryServer.create();
-    mongoose.connect(mongoServer.getUri());
+    mongoose.connect(await dbConfig.getUrl());
   });
 
   after(() => {
     mongoose.disconnect;
-    mongoServer.stop();
   });
 
   beforeEach(() => {
     Project.insertMany([
-      {pname: 'Project A', powner: 'Jack'}, 
-      {pname: 'Project B', powner: 'Alice'}, 
-      {pname: 'Project C', powner: 'Reena'}, 
-      {pname: 'Project D', powner: 'Sophia'}
+      {pname: 'Project A', startDate: new Date(), powner: 'Jack'}, 
+      {pname: 'Project B', startDate: new Date(), powner: 'Alice'}, 
+      {pname: 'Project C', startDate: new Date(), powner: 'Reena'}, 
+      {pname: 'Project D', startDate: new Date(), powner: 'Sophia'}
     ]);
   });
 
@@ -40,6 +38,14 @@ describe('Data Models', () => {
   });
 
   it('should not allow duplicate Projects', () => {
-    expect(() => Project.create({pname: 'Project B', powner: 'Alice'})).to.throw();
+    expect(() => Project.create({pname: 'Project B', startDate: new Date(), powner: 'Alice'})).to.throw();
+  });
+
+  it('should not allow missing name field', () => {
+    expect(() => Project.create({powner: 'No Name', startDate: new Date()})).to.throw();
+  });
+
+  it('should not allow missing startDate field', () => {
+    expect(() => Project.create({pname: 'Project E', powner: 'No Date'})).to.throw();
   });
 });
