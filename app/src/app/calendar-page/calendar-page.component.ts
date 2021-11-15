@@ -58,7 +58,7 @@ export class CalendarPageComponent implements OnInit {
             description: x.description,
             projectType: x.ptype,
             projectOwner: x.powner
-            }
+            }, 
           ]
         } 
       }

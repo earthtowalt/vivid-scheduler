@@ -25,7 +25,6 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProjects();
-
   }
 
    //Retrieves the projdata from the DB and populates them into an array of events
