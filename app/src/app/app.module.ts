@@ -8,6 +8,7 @@ import { appRoutingModule } from './app.routing';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { HttpClientModule } from '@angular/common/http';
+import { NgGanttEditorModule } from 'ng-gantt' 
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { CreateProjectPageComponent } from './create-project-page/create-project-page.component';
@@ -15,6 +16,7 @@ import { CalendarPageComponent } from './calendar-page/calendar-page.component';
 import { UpdateProjectPageComponent } from './update-project-page/update-project-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GanttChartPageComponent } from './gantt-chart-page/gantt-chart-page.component';
 
 
 @NgModule({
@@ -23,13 +25,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomePageComponent,
     CreateProjectPageComponent,
     CalendarPageComponent,
-    UpdateProjectPageComponent
+    UpdateProjectPageComponent,
+    GanttChartPageComponent
   ],
   imports: [
     BrowserModule,
     appRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgGanttEditorModule,
 
     CalendarModule.forRoot({
       provide: DateAdapter,
