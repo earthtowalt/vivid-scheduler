@@ -26,7 +26,7 @@ import { GanttChartPageComponent } from './gantt-chart-page/gantt-chart-page.com
     CreateProjectPageComponent,
     CalendarPageComponent,
     UpdateProjectPageComponent,
-    GanttChartPageComponent
+    GanttChartPageComponent,
   ],
   imports: [
     BrowserModule,

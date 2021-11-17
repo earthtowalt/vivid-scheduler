@@ -1,5 +1,24 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GanttEditorComponent, GanttEditorOptions } from 'ng-gantt';
+import { ProjectService } from '../services/project.service';
+
+interface ganttProject {
+  pID: Number;
+  pName: String;
+  pStart: String;
+  pEnd: String;
+  pClass: String;
+  pLink: String;
+  pMile: Number;
+  pRes: String;
+  pComp: Number;
+  pGroup: Number;
+  pParent: Number;
+  pOpen: Number;
+  pDepend: String;
+  pCaption: String;
+  pNotes: String;
+}
 
 @Component({
   selector: 'app-gantt-chart-page',
@@ -8,65 +27,66 @@ import { GanttEditorComponent, GanttEditorOptions } from 'ng-gantt';
 })
 export class GanttChartPageComponent implements OnInit {
   public editorOptions: GanttEditorOptions;
-  public data: any;
+  public data: ganttProject[] = [];
+  public projects: any;
   @ViewChild(GanttEditorComponent, { static: true })
   editor: GanttEditorComponent;
 
-  constructor() {
+  constructor(private _ProjectService: ProjectService,) {
     this.editorOptions = new GanttEditorOptions();
-    this.data = [
-      {
-        pID: 1,
-        pName: 'Black',
-        pStart: '2021-11-01',
-        pEnd: '2021-11-30',
-        pClass: 'ggroupblack',
-        pLink: '',
-        pMile: 0,
-        pRes: 'Brian',
-        pComp: 0,
-        pGroup: 1,
-        pParent: 0,
-        pOpen: 1,
-        pDepend: '',
-        pCaption: '',
-        pNotes: 'Some Notes text',
-      },
-      {
-        pID: 2,
-        pName: 'Black',
-        pStart: '2021-11-17',
-        pEnd: '2021-11-20',
-        pClass: 'ggroupblack',
-        pLink: '',
-        pMile: 0,
-        pRes: 'Brian',
-        pComp: 0,
-        pGroup: 0,
-        pParent: 1,
-        pOpen: 1,
-        pDepend: '',
-        pCaption: '',
-        pNotes: 'Some Notes text',
-      },
-      {
-        pID: 3,
-        pName: 'Child',
-        pStart: '2021-11-17',
-        pEnd: '2021-11-20',
-        pClass: 'ggroupblack',
-        pLink: '',
-        pMile: 0,
-        pRes: 'Brian',
-        pComp: 0,
-        pGroup: 0,
-        pParent: 1,
-        pOpen: 1,
-        pDepend: '',
-        pCaption: '',
-        pNotes: 'Some Notes text',
-      },
-    ];
+    this._ProjectService.getProjects().subscribe(
+      response => {
+        this.projects = response;
+        let id = 1;
+        for (let x of this.projects){
+          this.data = [
+            ...this.data, {
+              pID: id,
+              pName: x.pname,
+              pStart: x.startDate,
+              pEnd: x.startDate,
+              pClass: 'ggroupblack',
+              pLink: '',
+              pMile: 0,
+              pRes: x.powner,
+              pComp: 0,
+              pGroup: 1,
+              pParent: 0, 
+              pOpen: 1,
+              pDepend: '',
+              pCaption: '',
+              pNotes: 'This project is a ' + x.ptype + '. ' + x.description,
+            }
+          ]
+
+          let parent = id
+          for (let checkpoint of x.checkpoints) {
+            console.log(checkpoint)
+            id = id + 1
+            this.data = [
+              ...this.data, {
+                pID: id,
+                pName: x.pname + ' ' + checkpoint.title,
+                pStart: checkpoint.date,
+                pEnd: checkpoint.date,
+                pClass: 'ggroupblack',
+                pLink: '',
+                pMile: 0,
+                pRes: x.powner,
+                pComp: 0,
+                pGroup: 0,
+                pParent: parent, 
+                pOpen: 1,
+                pDepend: '',
+                pCaption: '',
+                pNotes: x.pdescription,
+              }
+            ]
+          }
+    
+          id = id + 1
+        }
+    })
   }
 
   ngOnInit(): void {
@@ -74,4 +94,5 @@ export class GanttChartPageComponent implements OnInit {
       vEditable: true,
     };
   }
+
 }
