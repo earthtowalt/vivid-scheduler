@@ -15,6 +15,7 @@ import { CalendarPageComponent } from './calendar-page/calendar-page.component';
 import { UpdateProjectPageComponent } from './update-project-page/update-project-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomePageComponent,
     CreateProjectPageComponent,
     CalendarPageComponent,
-    UpdateProjectPageComponent
+    UpdateProjectPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

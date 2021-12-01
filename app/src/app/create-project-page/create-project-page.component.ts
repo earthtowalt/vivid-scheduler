@@ -1,6 +1,7 @@
 import { Component, OnInit, ɵɵngDeclareClassMetadata } from '@angular/core';
 import { Checkpoint, Project } from '../models/data-models';
 import { ProjectService } from '../services/project.service';
+import {Router} from "@angular/router"
 
 @Component({
   selector: 'app-create-project-page',
@@ -10,9 +11,12 @@ import { ProjectService } from '../services/project.service';
 
 export class CreateProjectPageComponent implements OnInit {
 
-  constructor(private _ProjectService: ProjectService) { }
+  constructor(private _ProjectService: ProjectService, private router: Router) { }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem('LogIn') !== "true"){
+      this.router.navigate(['/login']);
+    }
   }
 
   // available project types

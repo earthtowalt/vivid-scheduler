@@ -1,0 +1,9 @@
+<form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm.value)">
+    <div class="form-container">
+        <div class="form-group">
+            <label for="name">Enter Admin Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="password">
+        </div>
+    </div>
+    <button type="submit">Submit</button>
+</form>
