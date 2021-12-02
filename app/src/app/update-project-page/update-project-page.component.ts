@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Checkpoint, Project } from '../models/data-models';
 import { ProjectService } from '../services/project.service';
+<<<<<<< HEAD
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Observable } from 'rxjs';
+=======
+>>>>>>> populating dropdown list
 
 
 
@@ -15,6 +18,7 @@ import { Observable } from 'rxjs';
 
 export class UpdateProjectPageComponent implements OnInit {
 
+<<<<<<< HEAD
   submitted: boolean;
 
   projects: Observable<Project[]>;
@@ -54,6 +58,28 @@ export class UpdateProjectPageComponent implements OnInit {
     this.submitted = true;
     console.log("submitted: " + JSON.stringify(data));
     alert("submitted: " + JSON.stringify(data));
+=======
+  projects: Project[];
+
+  selectedProject: Project;
+
+  constructor(private _ProjectService: ProjectService) { }
+
+  ngOnInit(): void {
+    //this._ProjectService.getProjects();
+    this.bindDropdown();
   }
+
+  bindDropdown() {
+    this._ProjectService.getProjects().subscribe(
+      response => {
+        this.projects = response;
+        console.log(response);
+        
+      }
+    );
+>>>>>>> populating dropdown list
+  }
+
 
 }
