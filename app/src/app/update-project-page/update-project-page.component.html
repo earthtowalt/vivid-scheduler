@@ -1,4 +1,14 @@
 <p>update-project-page works!</p>
 <h1>Select a project:</h1>
+<!-- List of projects to choose from -->
+<select [(ngModel)]=selectedProject>
+  <option *ngFor="let x of projects" [value]="x.pname" >{{ x.pname }}</option>
+</select>
+
 <h2>Edit project info:</h2>
+<!-- Responseive set of fields that will change when project changes -->
+
+<!-- Submit Button -->
 <h2>Edit project checkpoints:</h2>
+
+<!-- Editable view of project checkpoints -->
