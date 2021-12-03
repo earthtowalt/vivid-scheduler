@@ -14,6 +14,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { CreateProjectPageComponent } from './create-project-page/create-project-page.component';
 import { CalendarPageComponent } from './calendar-page/calendar-page.component';
 import { UpdateProjectPageComponent } from './update-project-page/update-project-page.component';
+import { DisplayProjectPageComponent } from './display-project-page/display-project-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GanttChartPageComponent } from './gantt-chart-page/gantt-chart-page.component';
@@ -27,13 +28,15 @@ import { GanttChartPageComponent } from './gantt-chart-page/gantt-chart-page.com
     CalendarPageComponent,
     UpdateProjectPageComponent,
     GanttChartPageComponent,
+    DisplayProjectPageComponent,
   ],
   imports: [
     BrowserModule,
-    appRoutingModule,
+    AppRoutingModule,
     HttpClientModule,
     FormsModule,
     NgGanttEditorModule,
+    NgbModule,
 
     CalendarModule.forRoot({
       provide: DateAdapter,
@@ -43,7 +46,8 @@ import { GanttChartPageComponent } from './gantt-chart-page/gantt-chart-page.com
      NgbModule
     
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
