@@ -1,7 +1,6 @@
-import { Component, OnInit, ɵɵngDeclareClassMetadata } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Checkpoint, Project } from '../models/data-models';
 import { ProjectService } from '../services/project.service';
-import {Router} from "@angular/router"
 
 @Component({
   selector: 'app-create-project-page',
@@ -11,7 +10,7 @@ import {Router} from "@angular/router"
 
 export class CreateProjectPageComponent implements OnInit {
 
-  constructor(private _ProjectService: ProjectService, private router: Router) { }
+  constructor(private _ProjectService: ProjectService) { }
 
   ngOnInit(): void {
   }
