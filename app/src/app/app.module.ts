@@ -13,6 +13,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { CreateProjectPageComponent } from './create-project-page/create-project-page.component';
 import { CalendarPageComponent } from './calendar-page/calendar-page.component';
 import { UpdateProjectPageComponent } from './update-project-page/update-project-page.component';
+import { DisplayProjectPageComponent } from './display-project-page/display-project-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -23,13 +24,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomePageComponent,
     CreateProjectPageComponent,
     CalendarPageComponent,
-    UpdateProjectPageComponent
+    UpdateProjectPageComponent,
+    DisplayProjectPageComponent,
   ],
   imports: [
     BrowserModule,
     appRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgbModule,
 
     CalendarModule.forRoot({
       provide: DateAdapter,
@@ -39,7 +42,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
      NgbModule
     
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
