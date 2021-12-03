@@ -11,6 +11,7 @@ const app = express();
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(process.cwd()+"./../app/dist/app/"));
 console.log('hello')
 app.use("/api", routes);
 
@@ -33,6 +34,10 @@ const port = process.env.PORT || "8000";
 app.set("port", port);
 
 const server = http.createServer(app);
+
+app.get('/', (req,res) => {
+  res.sendFile(process.cwd()+"./../app/dist/app/")
+});
 
 server.listen(port, function () {
   console.info(`Server is up and running on port ${port}`);
