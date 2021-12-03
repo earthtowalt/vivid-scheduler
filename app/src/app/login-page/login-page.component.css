@@ -1,0 +1,13 @@
+.form-wrapper {
+    font-family: 'Roboto';
+    font-size: 17.5px;
+    padding: 30px;
+}
+
+input {
+    border-radius: 10px;
+    width: 446px;
+    height: 32.5px;
+    padding: 5px;
+    border: 1px solid;
+}

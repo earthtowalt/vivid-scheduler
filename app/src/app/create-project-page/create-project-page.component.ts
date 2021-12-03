@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵɵngDeclareClassMetadata } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Checkpoint, Project } from '../models/data-models';
 import { ProjectService } from '../services/project.service';
 

@@ -41,7 +41,7 @@ const createCheckpoints = (startDate) => {
 
 // Create a new project
 router.post("/project", async (req, res) => {
-  console.log("beggining of post")
+  console.log("beggining of post");
   // Schema for project info validation
   const schema = Joi.object({
     pname: Joi.string().required(),
@@ -50,8 +50,8 @@ router.post("/project", async (req, res) => {
     startDate: Joi.date().required(),
     checkPoints: Joi.array(),
     description: Joi.string(),
-    completed: Joi.string(), 
-    url: Joi.string()
+    completed: Joi.string(),
+    url: Joi.string(),
   });
   try {
     let data = await schema.validateAsync(req.body);
@@ -73,6 +73,7 @@ router.post("/project", async (req, res) => {
   }
 });
 
+// Update project
 router.put('/project', function(req, res) {
   let data = req.body;
   console.log(data);
@@ -81,6 +82,25 @@ router.put('/project', function(req, res) {
       console.log("Something went wrong");
     }
   });
+});
+
+// Create a new admin
+router.post("/login", async (req, res) => {
+  // Schema for admin info validation
+  const schema = Joi.object({
+    password: Joi.string().required(),
+  });
+  try {
+    let data = await schema.validateAsync(req.body);
+    console.log(data);
+    if (data.password === "p") {
+      return res.status(201).send({ user: "admin" });
+    }
+    return res.status(400).send({ error: "Password is incorrect" });
+  } catch (err) {
+    console.log(err);
+    res.status(400).send({ error: err.details[0].message });
+  }
 });
 
 module.exports = router;
