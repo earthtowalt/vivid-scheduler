@@ -1,6 +1,7 @@
 <h1>Select a project:</h1>
 <!-- List of projects to choose from -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 <select [(ngModel)]="selectedProject" (ngModelChange)="open(content, selectedProject)">
   <option *ngFor="let x of projects | async" [text]="x.pname" [ngValue]="x">{{ x.pname }}</option>
 </select>
@@ -100,13 +101,106 @@
 =======
 <select [(ngModel)]=selectedProject>
   <option *ngFor="let x of projects" [value]="x.pname" >{{ x.pname }}</option>
+=======
+<select [(ngModel)]="selectedProject" (ngModelChange)="open(content, selectedProject)">
+  <option *ngFor="let x of projects | async" [text]="x.pname" [ngValue]="x">{{ x.pname }}</option>
+>>>>>>> update project page modal created
 </select>
+
+<div id="editControls">
 
 <h2>Edit project info:</h2>
 <!-- Responseive set of fields that will change when project changes -->
-
 <!-- Submit Button -->
-<h2>Edit project checkpoints:</h2>
+<!-- <form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm.value)">
+  <div class="form-container">
+      <div class="form-group">
+          <label for="name">Project Name:</label>
+          <input type="text" class="form-control" id="name" name="pname" minlength="1" required [(ngModel)]="selectedProject.pname">
+      </div>
+          
+      <div class="form-group">
+          <label for="owner">Project Owner:</label>
+          <input type="text" class="form-control" id="owner" name="powner" minlength="1" required [(ngModel)]="selectedProject.powner">
+      </div>
 
+      <div class="form-group">
+          <label for="type">Project Type:</label>
+          <select class="form-control project-select" id="type" name="ptype" minlength="1" required [(ngModel)]="selectedProject.ptype">
+          <option *ngFor="let type of types" [value]="type">{{type}}</option>
+          </select>
+      </div>
+
+      <div class="form-group">
+          <label for="startDate">Project Start Date:</label>
+          <input type="date" class="form-control" id="startDate" name="startDate" required [(ngModel)]="selectedProject.pstartDate">
+      </div>
+
+      <div class="form-group">
+          <label for="description">Project Description:</label>
+          <textarea class="form-control form-description" rows="5" cols="50" id="description" minlength="1" name="description" [(ngModel)]="selectedProject.pdescription"></textarea>
+      </div>
+  </div>
+  <button class="project-submit-button" type="submit">Submit</button>
+</form> -->
+<h2>Edit project checkpoints:</h2>
+<!-- Editable view of project checkpoints -->
+
+</div>
+
+<<<<<<< HEAD
 <!-- Editable view of project checkpoints -->
 >>>>>>> populating dropdown list
+=======
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-update-title">Update {{ selectedProject.pname }}</h4>
+  </div>
+  <div class="modal-body">
+      <!-- <ul *ngFor="let data of events" class="horizontal">
+          <ng-container *ngIf="data != undefined && data.start.getTime() == dateClickedOn.getTime()" style="color:aqua;">
+              <h2 style="font-size: 20px; margin-left:-30px;"><b>{{data.title}}</b></h2>
+              <li><b>Owner: </b>{{data.projectOwner}}</li>
+              <li><b>Project Type: </b>{{data.projectType}}</li>
+              <li><b>Description: </b>{{data.description}}</li>
+          </ng-container>
+     </ul> -->
+     
+     <form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm.value)">
+      <div class="form-container">
+          <div class="form-group">
+              <label for="name">Project Name:</label>
+              <input type="text" class="form-control" id="name" name="pname" minlength="1" required [(ngModel)]="selectedProject.pname">
+          </div>
+              
+          <div class="form-group">
+              <label for="owner">Project Owner:</label>
+              <input type="text" class="form-control" id="owner" name="powner" minlength="1" required [(ngModel)]="selectedProject.powner">
+          </div>
+    
+          <div class="form-group">
+              <label for="type">Project Type:</label>
+              <select class="form-control project-select" id="type" name="ptype" minlength="1" required [(ngModel)]="selectedProject.ptype">
+              <option *ngFor="let type of types" [value]="type">{{type}}</option>
+              </select>
+          </div>
+    
+          <div class="form-group">
+              <label for="startDate">Project Start Date:</label>
+              <input type="date" class="form-control" id="startDate" name="startDate" required [(ngModel)]="selectedProject.pstartDate">
+          </div>
+    
+          <div class="form-group">
+              <label for="description">Project Description:</label>
+              <textarea class="form-control form-description" rows="5" cols="50" id="description" minlength="1" name="description" [(ngModel)]="selectedProject.pdescription"></textarea>
+          </div>
+      </div>
+      <!-- <button class="project-submit-button" type="submit">Submit</button> -->
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-gray" (click)="modal.close('cancel')">Cancel</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('save')">Done</button>
+  </div>
+</ng-template>
+>>>>>>> update project page modal created
