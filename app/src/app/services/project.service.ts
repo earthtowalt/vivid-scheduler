@@ -19,4 +19,9 @@ export class ProjectService {
   addProject(project: Project) {
     return this.http.post<any>(this.rootURL+"api/project", project);
   }
+
+  // update project in server
+  updateProject(projectName: any) {
+    return this.http.put<any>(this.rootURL + 'api/project', projectName);
+  }
 }

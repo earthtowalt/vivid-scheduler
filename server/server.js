@@ -11,7 +11,7 @@ const app = express();
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+console.log('hello')
 app.use("/api", routes);
 
 

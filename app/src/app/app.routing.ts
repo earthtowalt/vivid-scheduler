@@ -6,6 +6,8 @@ import { CreateProjectPageComponent } from './create-project-page/create-project
 import { CalendarPageComponent } from './calendar-page/calendar-page.component'
 import { UpdateProjectPageComponent } from './update-project-page/update-project-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { GanttChartPageComponent } from './gantt-chart-page/gantt-chart-page.component';
+import { DisplayProjectPageComponent} from './display-project-page/display-project-page.component';
 
 const routes: Routes = [
     { path: '', component: HomePageComponent },
@@ -13,6 +15,8 @@ const routes: Routes = [
     { path: 'calendar', component: CalendarPageComponent },
     { path: 'update-project', component: UpdateProjectPageComponent, canActivate: [AuthGuard]},
     { path: 'login', component: LoginPageComponent},
+    { path: 'gantt-chart', component: GanttChartPageComponent},
+    { path: 'display-project', component: DisplayProjectPageComponent},
 ];
 
 export const appRoutingModule = RouterModule.forRoot(routes);

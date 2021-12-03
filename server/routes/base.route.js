@@ -1,5 +1,6 @@
 const express = require("express");
 const Joi = require("joi");
+const { findOneAndUpdate } = require("./../models/project");
 const router = express.Router();
 
 // data models
@@ -70,6 +71,17 @@ router.post("/project", async (req, res) => {
     console.log(err);
     res.status(400).send({ error: err.details[0].message });
   }
+});
+
+// Update project
+router.put('/project', function(req, res) {
+  let data = req.body;
+  console.log(data);
+  curProject = Project.findOneAndUpdate({pname: data.pname}, {$set:{url:data.url, completed:'Yes'}}, function(err, doc){
+    if(err){
+      console.log("Something went wrong");
+    }
+  });
 });
 
 // Create a new admin

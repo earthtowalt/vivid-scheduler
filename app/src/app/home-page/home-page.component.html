@@ -1,1 +1,6 @@
-<p>home-page works!</p>
+<h1 class="heading">Welcome to VIVID-Scheduler!</h1>
+<div class="project-display" *ngFor="let project of completedEvents">
+    <p class="project-name">{{project.pname}}</p>
+    <p>{{project.url}}</p>
+    <iframe width="500" height="300"src="https://www.youtube.com/embed/Cnyphjppfw4"></iframe>
+</div>

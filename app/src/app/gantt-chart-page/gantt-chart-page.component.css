@@ -1,0 +1,14 @@
+.nav-to-update-button {
+    font-family: 'Roboto';
+    position: fixed;
+    left: 30%;
+    margin-top: 10px;
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.gantt-heading {
+    padding: 15px;
+}
