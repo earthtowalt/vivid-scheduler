@@ -6,7 +6,7 @@
       <li class="nav-item"><a class="nav-link" routerLink="gantt-chart">Gantt Chart</a></li>
       <li *ngIf="currentUser" class="nav-item"><a class="nav-link" routerLink="create-project">Create Project</a></li>
       <li *ngIf="currentUser" class="nav-item"><a class="nav-link disabled" routerLink="">Update Project</a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="display-project">Display Project</a></li>
+      <li *ngIf="currentUser" class="nav-item"><a class="nav-link" routerLink="display-project">Display Project</a></li>
       <button
         *ngIf="!currentUser"
         type="button"
