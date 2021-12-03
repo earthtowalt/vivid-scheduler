@@ -1,14 +1,35 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="content">
-        <ul class="navbar-nav mr-auto" routerLinkActive="active">
-            <li class="nav-item"><a class="nav-link disabled" routerLink="">Home</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="calendar">Calendar</a></li>
-            <li *ngIf="loggedIn" class="nav-item"><a class="nav-link" routerLink="create-project">Create Project</a></li>
-            <li class="nav-item"><a class="nav-link disabled" routerLink="">Update Project</a></li>
-            <li *ngIf="!loggedIn" class="nav-item"><a class="nav-link" routerLink="login">Login</a></li>
-            <button *ngIf="loggedIn" (click)="logOut()">Logout</button>
-        </ul>
-    </div>
+  <div class="content">
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item"><a class="nav-link" routerLink="">Home</a></li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="calendar">Calendar</a>
+      </li>
+      <li *ngIf="currentUser" class="nav-item">
+        <a class="nav-link" routerLink="create-project">Create Project</a>
+      </li>
+      <li *ngIf="currentUser" class="nav-item">
+        <a class="nav-link disabled" routerLink="">Update Project</a>
+      </li>
+      <div class="spacer"></div>
+      <button
+        *ngIf="!currentUser"
+        type="button"
+        routerLink="login"
+        class="btn btn-outline-primary"
+      >
+        Login
+      </button>
+      <button
+        *ngIf="currentUser"
+        type="button"
+        (click)="logOut()"
+        class="btn btn-outline-primary"
+      >
+        Logout
+      </button>
+    </ul>
+  </div>
 </nav>
 
 <router-outlet></router-outlet>

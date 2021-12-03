@@ -14,9 +14,6 @@ export class CreateProjectPageComponent implements OnInit {
   constructor(private _ProjectService: ProjectService, private router: Router) { }
 
   ngOnInit(): void {
-    if(sessionStorage.getItem('LogIn') !== "true"){
-      this.router.navigate(['/login']);
-    }
   }
 
   // available project types

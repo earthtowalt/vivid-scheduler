@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,18 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'app';
-  loggedIn: boolean = false;
-  constructor(private router: Router) {}
-  ngOnInit() {
-    this.loggedIn = sessionStorage.getItem('LogIn') === 'true';
+  currentUser: string | null = null;
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
+    this.authenticationService.currentUser.subscribe(
+      (x) => (this.currentUser = x)
+    );
   }
+  ngOnInit() {}
   logOut() {
-    sessionStorage.setItem('LogIn', JSON.stringify(false));
-    this.loggedIn = false;
-    this.router.navigate(['/']);
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
 }
