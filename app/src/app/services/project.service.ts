@@ -8,7 +8,8 @@ import { Project } from '../models/data-models';
 })
 export class ProjectService {
   constructor(private http: HttpClient) {}
-  rootURL: string = 'http://localhost:8000/';
+  // rootURL: string = 'http://localhost:8000/';
+  rootURL: string = "";
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   // retrieve projects from server

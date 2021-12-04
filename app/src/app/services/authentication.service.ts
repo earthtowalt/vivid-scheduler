@@ -10,7 +10,8 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<string | null>;
   public currentUser: Observable<string | null>;
   // private valid: string = "p";
-  rootURL: string = 'http://localhost:8000/';
+  // rootURL: string = 'http://localhost:8000/';
+  rootURL: string = "";
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<string | null>(
