@@ -46,20 +46,26 @@ export class CalendarPageComponent implements OnInit {
         for (let x of this.projects){
           //The client's don't have specific times within the day for deadlines, so we're 
           // setting the hours to zero so everything is standard. 
-          var projDate = new Date(x.startDate);
-          console.log("this is the completed: " + x.completed)
-          projDate.setHours(0, 0, 0, 0);
+          console.log(x.checkpoints);
+          console.log(x.checkpoints[0].date)
+          console.log(x.checkpoints[0].title)
 
-          //Adding onto our array of events
-          this.events = [
-            ...this.events, {
-            start: new Date(projDate), 
-            title: x.pname,
-            description: x.description,
-            projectType: x.ptype,
-            projectOwner: x.powner
-            }, 
-          ]
+          for (let y of x.checkpoints){
+            var projDate = new Date(y.date);
+            projDate.setHours(0, 0, 0, 0);
+  
+            let fullName = x.pname + " " + y.title
+            //Adding onto our array of events
+            this.events = [
+              ...this.events, {
+              start: new Date(projDate), 
+              title: fullName,
+              description: x.description,
+              projectType: x.ptype,
+              projectOwner: x.powner
+              }, 
+            ]
+          }
         } 
       }
     );
