@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../models/data-models'; 
 import { ProjectService } from '../services/project.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 interface CompletedEvents {
   pname:string;
-  url:string;
+  url:any;
 }
 @Component({
   selector: 'app-home-page',
@@ -14,17 +15,22 @@ interface CompletedEvents {
 export class HomePageComponent implements OnInit {
   projects: Project[];
   baseURL: String = 'https://www.youtube.com/embed/';
+  currentURL: SafeHtml;
 
   completedEvents: CompletedEvents[] = [];
 
   constructor(
-    private _ProjectService:ProjectService
+    private _ProjectService:ProjectService,
+    private _sanitizer: DomSanitizer
   ) { 
-  
   }
 
   ngOnInit(): void {
     this.getProjects();
+  }
+
+  setURL(project: any) {
+    return this._sanitizer.bypassSecurityTrustResourceUrl(project.url);
   }
 
    //Retrieves the projdata from the DB and populates them into an array of events
@@ -36,21 +42,19 @@ export class HomePageComponent implements OnInit {
         console.log(response);
         for (let x of this.projects){
           if (x.completed == "Yes"){
-            let newUrl = x.url.substring(32)
+            let newUrl = x.url.substring(33)
             //Adding onto our array of events
             this.completedEvents = [
               ...this.completedEvents, {
                 pname: x.pname,
-                url: this.baseURL + newUrl           
+                url: this.baseURL + newUrl         
               }
             ]
-            console.log(this.completedEvents[0].url)
 
           }
         } 
       }
     );
-    console.log(this.completedEvents)
   }
 
 }
