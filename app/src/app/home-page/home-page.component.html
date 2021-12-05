@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-<h1 class="heading">Welcome to VIVID-Scheduler!</h1>
-<div class="project-display" *ngFor="let project of completedEvents">
-    <p class="project-name">{{project.pname}}</p>
-    <p>{{project.url}}</p>
-    <iframe [src]="setURL(project)" width="500" height="300" ></iframe>
-</div>
-=======
-
 <header class="showcase">
     <div class="container showcase-inner">
         <h1 class="heading">Welcome to VIVID-Scheduler!</h1>
@@ -17,9 +8,7 @@
     <div class="card-body">
         <div class="project-display" *ngFor="let project of completedEvents">
             <p class="project-name">{{project.pname}}</p>
-            <p>{{project.url}}</p>
-            <iframe width="500" height="300"src="https://www.youtube.com/embed/Cnyphjppfw4"></iframe>
+            <iframe [src]="setURL(project)" width="500" height="300" ></iframe>
         </div> 
     </div>
 </div>
->>>>>>> 71e0630474d479f567301656c73849f181fdaae2
