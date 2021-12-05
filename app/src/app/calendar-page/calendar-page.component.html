@@ -1,6 +1,6 @@
-<div class="body row text-center" style="margin-top: 20px;">
+<div class="body row text-center">
 
-    <div class="col-md-4">
+    <div class="col-md-4" style="padding:10px;">
         <div class="btn-group">
             <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
                 Previous
@@ -13,10 +13,10 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" style="padding:10px;">
         <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" style="padding:10px;">
         <div class="btn-group">
             <div class="btn btn-primary" (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month">
                 Month
