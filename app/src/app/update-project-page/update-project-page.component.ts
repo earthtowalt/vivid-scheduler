@@ -17,6 +17,7 @@ export class UpdateProjectPageComponent implements OnInit {
 
   selectedProject: any;
 
+
   // available project types
   types = ['Instagram Reel', 'Youtube Video', 'TikTok', 'Other'];
 
@@ -41,12 +42,22 @@ export class UpdateProjectPageComponent implements OnInit {
     this.modalService.open(content, {ariaLabelledBy: 'modal-update-title'}).result.then((result) => {
       if (result === 'save') {
         console.log('calling projectservice: ' + JSON.stringify(this.selectedProject));
-        let res = this._ProjectService.changeProject(this.selectedProject);
-        res.subscribe(data => console.log(data));
+        this._ProjectService.changeProject(this.selectedProject).subscribe();
       }
     }, (reason) => {
       // if the modal is closed unexpectedly
       console.log('error: ' + reason);
     });
+  }
+
+  delete(modalRef: any) {
+    if (confirm('Are you sure you want to save delete this project?')) {
+      // Save it!
+      console.log('pname: ' + this.selectedProject.pname);
+      this._ProjectService.deleteProject(this.selectedProject.pname).subscribe((e) => { 
+                this.bindSelectProjectDropdown();
+              });
+      modalRef.close('delete');
+    }
   }
 }

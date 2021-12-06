@@ -26,7 +26,7 @@ export class DisplayProjectPageComponent implements OnInit {
         for (let x of response){
           this.projects.push(x.pname);
         } 
-      }
+      }, err => console.log(err)
     );
 
   }

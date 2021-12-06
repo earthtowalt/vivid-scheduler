@@ -6,10 +6,14 @@ import { Project } from '../models/data-models';
 @Injectable({
   providedIn: 'root',
 })
+
 export class ProjectService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.headers = new HttpHeaders();
+    this.headers.set('Content-Type', 'application/json');
+  }
+  headers: HttpHeaders;
   rootURL: string = 'http://localhost:4200/';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   // retrieve projects from server
   getProjects(): Observable<any[]> {
@@ -28,5 +32,10 @@ export class ProjectService {
   // actually update a project....
   changeProject(project: Project) {
     return this.http.put<any>(this.rootURL + 'api/update-project', project);
+  }
+
+  // delete project
+  deleteProject(projectName: String) {
+    return this.http.post<any>(this.rootURL + 'api/delete-project', {pname: projectName});
   }
 }

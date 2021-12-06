@@ -84,7 +84,7 @@ router.put('/project', function(req, res) {
   });
 });
 
-// Update a Project
+// Actually update a Project
 router.put('/update-project', function(req, res) {
   
   const data = req.body;
@@ -101,6 +101,22 @@ router.put('/update-project', function(req, res) {
     }
   });
 
+  res.status(201).send({ pname: data.pname });
+
+});
+
+// Delete a Project
+router.post('/delete-project', function(req, res) {
+  const data = req.body;
+  console.log('POST delete-project: ' + JSON.stringify(data));
+
+  Project.deleteOne({pname: data.pname},
+    function(err, doc) {
+      if (err) {
+        console.log('something went wrong - ' + err);
+      }
+    });
+  res.status(201).send({pname: 'test', result: 'success'});
 });
 
 // Create a new admin
