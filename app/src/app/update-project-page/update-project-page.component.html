@@ -1,11 +1,15 @@
-<div class="update-container" class='update-container'>
-  <h1>Select a Project to Update</h1>
-  <!-- List of projects to choose from -->
 
-  <mat-action-list>
-    <button mat-list-item *ngFor="let project of projects | async" (click)="open(content, project)">{{ project.pname }}</button>
-  </mat-action-list>
+<div class ="card showcase showcase-inner card-body">
+  <div class="update-container" style="margin-top: -200px">
+    <h4>Select a Project to Update</h4>
+    <!-- List of projects to choose from -->
+  
+    <mat-action-list>
+      <button mat-list-item *ngFor="let project of projects | async" (click)="open(content, project)">{{ project.pname }}</button>
+    </mat-action-list>
+  </div>
 </div>
+
 
 <ng-template #content let-modal>
   <div class="modal-header">
