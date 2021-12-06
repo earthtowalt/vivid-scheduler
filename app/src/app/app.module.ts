@@ -8,6 +8,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { HttpClientModule } from '@angular/common/http';
 import { NgGanttEditorModule } from 'ng-gantt' 
+import { MatListModule } from '@angular/material/list';
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { CreateProjectPageComponent } from './create-project-page/create-project-page.component';
@@ -38,6 +39,7 @@ import { GanttChartPageComponent } from './gantt-chart-page/gantt-chart-page.com
     FormsModule,
     NgGanttEditorModule,
     NgbModule,
+    MatListModule,
 
     CalendarModule.forRoot({
       provide: DateAdapter,

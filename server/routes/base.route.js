@@ -19,6 +19,7 @@ router.get("/projects", function (req, res) {
 
 // add checkpoints
 const createCheckpoints = (startDate) => {
+  console.log('startDate: ' + typeof startDate + ' ' + JSON.stringify(startDate));
   const numWeeks = 2;
   const titles = [
     "filming",
@@ -82,6 +83,42 @@ router.put('/project', function(req, res) {
       console.log("Something went wrong");
     }
   });
+});
+
+// Actually update a Project
+router.put('/update-project', function(req, res) {
+  
+  const data = req.body;
+  console.log('PUT update-project: ' + data);
+  
+  curProject = Project.findOneAndUpdate({pname: data.pname}, {$set:{
+      powner:data.powner, 
+      ptype:data.ptype,
+      startDate:data.startDate,
+      checkpoints:createCheckpoints(new Date(data.startDate)),
+      description:data.description,
+    }}, function(err, doc){
+    if(err){
+      console.log("Something went wrong - " + err);
+    }
+  });
+
+  res.status(201).send({ pname: data.pname });
+
+});
+
+// Delete a Project
+router.post('/delete-project', function(req, res) {
+  const data = req.body;
+  console.log('POST delete-project: ' + JSON.stringify(data));
+
+  Project.deleteOne({pname: data.pname},
+    function(err, doc) {
+      if (err) {
+        console.log('something went wrong - ' + err);
+      }
+    });
+  res.status(201).send({pname: 'test', result: 'success'});
 });
 
 // Create a new admin
