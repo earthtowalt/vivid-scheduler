@@ -10,7 +10,8 @@ const Project = require("./../models/project");
 router.get("/projects", function (req, res) {
   Project.find(function (err, projects) {
     if (err) res.send(err);
-    console.log(projects);
+    // console.log("projects:" + projects);
+    // console.log("err:" + err);
     res.status(200).send(projects); // return all projects in JSON format
   });
 });
@@ -42,7 +43,10 @@ const createCheckpoints = (startDate) => {
 
 // Create a new project
 router.post("/project", async (req, res) => {
+
   console.log("beggining of post");
+  //console.log("beggining of post")
+  //console.log("beggining of post")
   // Schema for project info validation
   const schema = Joi.object({
     pname: Joi.string().required(),
@@ -62,14 +66,14 @@ router.post("/project", async (req, res) => {
     try {
       const project = new Project(data);
       await project.save();
-      console.log(project);
+      // console.log(project);
       res.status(201).send({ pname: project.pname });
     } catch (err) {
-      console.log(err.message);
+      // console.log('in server(400): ' + err.message);
       res.status(400).send({ error: err.message });
     }
   } catch (err) {
-    console.log(err);
+    // console.log('in server(400): ' + err);
     res.status(400).send({ error: err.details[0].message });
   }
 });
