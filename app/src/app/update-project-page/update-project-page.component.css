@@ -33,12 +33,12 @@ h4{
   color: #3700B3;
   margin-bottom: 20px;
 }
-
+/* 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} */
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -64,11 +64,14 @@ body {
 }
 
 .showcase .showcase-inner {
-  margin-top: -100px;
+  margin-top: 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  /* margin: 0;
+  padding: 0;
+  box-sizing: border-box; */
 }
 
 .showcase h1 {
