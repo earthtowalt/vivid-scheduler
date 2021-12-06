@@ -10,7 +10,7 @@ const Project = require("./../models/project");
 router.get("/projects", function (req, res) {
   Project.find(function (err, projects) {
     if (err) res.send(err);
-    console.log(projects);
+    // console.log(projects);
     res.status(200).send(projects); // return all projects in JSON format
   });
 });
@@ -31,8 +31,8 @@ const createCheckpoints = (startDate) => {
   titles.forEach((curTitle, i) => {
     const date = new Date(startDate);
     const temp = {
-      title: curTitle,
-      date: new Date(date.setDate(startDate.getDate() + numWeeks * 7 * i)),
+      cname: curTitle,
+      cdate: new Date(date.setDate(startDate.getDate() + numWeeks * 7 * i)),
     };
     checkpoints.push(temp);
   });
@@ -47,17 +47,18 @@ router.post("/project", async (req, res) => {
     pname: Joi.string().required(),
     powner: Joi.string(),
     ptype: Joi.string(),
-    startDate: Joi.date().required(),
+    pstartDate: Joi.date().required(),
     checkPoints: Joi.array(),
-    description: Joi.string(),
-    completed: Joi.string(),
-    url: Joi.string(),
+    pdescription: Joi.string(),
+    pcompleted: Joi.string(),
+    purl: Joi.string(),
   });
   try {
+    debugger;
     let data = await schema.validateAsync(req.body);
     // add checkpoints
-    const checkpoints = createCheckpoints(data.startDate);
-    data = { ...data, checkpoints: checkpoints };
+    const checkpoints = createCheckpoints(data.pstartDate);
+    data = { ...data, pcheckpoints: checkpoints };
     try {
       const project = new Project(data);
       await project.save();
@@ -73,15 +74,52 @@ router.post("/project", async (req, res) => {
   }
 });
 
-// Update project
+// Mark a project as completed
 router.put('/project', function(req, res) {
   let data = req.body;
+  console.log('Project ' + data.pname + " is complete");
   console.log(data);
-  curProject = Project.findOneAndUpdate({pname: data.pname}, {$set:{url:data.url, completed:'Yes'}}, function(err, doc){
+  curProject = Project.findOneAndUpdate({pname: data.pname}, {$set:{purl:data.purl, pcompleted:'Yes'}}, function(err, doc){
     if(err){
       console.log("Something went wrong");
+    } else {
+      console.log('success!');
     }
   });
+  console.log(curProject.pname + curProject.pcompleted)
+});
+
+// Update a Project
+router.put('/update-project', function(req, res) {
+  
+  // const schema = Joi.object({
+  //   pname: Joi.string().required(),
+  //   powner: Joi.string(),
+  //   ptype: Joi.string(),
+  //   startDate: Joi.date().required(),
+  //   checkPoints: Joi.array(),
+  //   description: Joi.string(),
+  //   completed: Joi.string(),
+  //   url: Joi.string(),
+  // });
+
+  // let data = await schema.validateAsync(req.body);
+  // console.log('update: ' + JSON.stringify(data));
+  
+  const data = req.body;
+  console.log('PUT update-project: ' + data.pname);
+
+  curProject = Project.findOneAndUpdate({pname: data.pname}, {$set:{
+      powner:data.powner, 
+      ptype:data.ptype,
+      pstartDate:data.pstartDate,
+      pdescription:data.pdescription,
+    }}, function(err, doc){
+    if(err){
+      console.log("Something went wrong - " + err);
+    }
+  });
+
 });
 
 // Create a new admin

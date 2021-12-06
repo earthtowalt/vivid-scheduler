@@ -20,7 +20,7 @@ export class CreateProjectPageComponent implements OnInit {
 
   // create project object associated with this specific form
   currentTime = new Date()
-  projectModel = new Project(1, '', '', '', this.currentTime, [new Checkpoint('', '', this.currentTime)],'', 'No', ' ');
+  projectModel = new Project('', '', '', this.currentTime, [], '', 'No', '');
 
   submitted = false;
 
@@ -41,11 +41,11 @@ export class CreateProjectPageComponent implements OnInit {
     this.projectModel.pstartDate = data.pstartDate
     this.projectModel.pdescription = data.pdescription
     this.projectModel.checkPoints = data.checkPoints
-    data.completed = 'No'
-    data.url = ' '
+    this.projectModel.pcompleted = 'No'
+    this.projectModel.purl = ' '
 
     // register the new project to server
-    this._ProjectService.addProject(data)
+    this._ProjectService.addProject(this.projectModel)
     .subscribe(
       data => console.log(data)
     )

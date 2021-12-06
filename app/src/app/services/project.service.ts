@@ -20,8 +20,15 @@ export class ProjectService {
     return this.http.post<any>(this.rootURL+"api/project", project);
   }
 
-  // update project in server
+  // complete a project in server
   updateProject(projectName: any) {
     return this.http.put<any>(this.rootURL + 'api/project', projectName);
+  }
+
+  // update a project in server
+  changeProject(project: Project) {
+    console.log('project service :: changeProject: ' + project.pname);
+    let res = this.http.put<any>(this.rootURL + 'api/update-project', project);
+    return res;
   }
 }

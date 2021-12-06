@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GanttEditorComponent, GanttEditorOptions } from 'ng-gantt';
 import { ProjectService } from '../services/project.service';
 import { Router } from '@angular/router';
+import { Project } from '../models/data-models';
 
 interface ganttProject {
   pID: Number;
@@ -41,13 +42,13 @@ export class GanttChartPageComponent implements OnInit {
         this.projects = response;
         let id = 1;
         for (let x of this.projects){
-          if (x.completed == 'No') {
+          if (x.pcompleted === 'No') {
             this.data = [
               ...this.data, {
                 pID: id,
                 pName: x.pname,
-                pStart: x.startDate,
-                pEnd: x.startDate,
+                pStart: x.pstartDate,
+                pEnd: x.pstartDate,
                 pClass: 'ggroupblack',
                 pLink: '',
                 pMile: 0,
@@ -58,27 +59,26 @@ export class GanttChartPageComponent implements OnInit {
                 pOpen: 1,
                 pDepend: '',
                 pCaption: '',
-                pNotes: 'This project is a ' + x.ptype + '. ' + x.description,
+                pNotes: 'This project is a ' + x.ptype + '. ' + x.pdescription,
               }
             ]
   
             let parent = id
-            for (var i = 0; i < x.checkpoints.length; ++i) {
-              let checkpoint = x.checkpoints[i]
-              let nextCheckpoint = x.checkpoints[i+1]
+            for (var i = 0; i < x.pcheckpoints.length; ++i) {
+              let checkpoint = x.pcheckpoints[i]
+              let nextCheckpoint = x.pcheckpoints[i+1]
               let style = 'gtaskblue'
-              if (i == x.checkpoints.length - 1) {
-                nextCheckpoint = x.checkpoints[i]
+              if (i == x.pcheckpoints.length - 1) {
+                nextCheckpoint = x.pcheckpoints[i]
                 style = 'gtaskred'
               }
-              console.log(checkpoint)
               id = id + 1
               this.data = [
                 ...this.data, {
                   pID: id,
-                  pName: x.pname + ' ' + checkpoint.title,
-                  pStart: checkpoint.date,
-                  pEnd: nextCheckpoint.date,
+                  pName: x.pname + ' ' + checkpoint.cname,
+                  pStart: checkpoint.cdate,
+                  pEnd: nextCheckpoint.cdate,
                   pClass: style,
                   pLink: '',
                   pMile: 0,
@@ -91,13 +91,14 @@ export class GanttChartPageComponent implements OnInit {
                   pCaption: '',
                   pNotes: x.pdescription,
                 }
-              ]
+              ];
             }
       
             id = id + 1
           }
         }
-    })
+        console.log(this.data);
+    });
   }
 
   ngOnInit(): void {

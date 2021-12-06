@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
 import { startOfDay } from 'date-fns';
-import { Project } from '../project';
+import { Project } from '../models/data-models';
 import { ProjectService } from '../services/project.service';
 
 interface MyEvent extends CalendarEvent {
@@ -46,21 +46,21 @@ export class CalendarPageComponent implements OnInit {
         for (let x of this.projects){
           //The client's don't have specific times within the day for deadlines, so we're 
           // setting the hours to zero so everything is standard. 
-          console.log(x.checkpoints);
-          console.log(x.checkpoints[0].date)
-          console.log(x.checkpoints[0].title)
+          // console.log(x.checkpoints);
+          // console.log(x.checkpoints[0].date)
+          // console.log(x.checkpoints[0].title)
 
-          for (let y of x.checkpoints){
-            var projDate = new Date(y.date);
+          for (let y of x.checkPoints){
+            var projDate = new Date(y.cdate);
             projDate.setHours(0, 0, 0, 0);
   
-            let fullName = x.pname + " " + y.title
+            let fullName = x.pname + " " + y.cname
             //Adding onto our array of events
             this.events = [
               ...this.events, {
               start: new Date(projDate), 
               title: fullName,
-              description: x.description,
+              description: x.pdescription,
               projectType: x.ptype,
               projectOwner: x.powner
               }, 

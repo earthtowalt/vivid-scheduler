@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {MatListModule} from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +39,7 @@ import { GanttChartPageComponent } from './gantt-chart-page/gantt-chart-page.com
     FormsModule,
     NgGanttEditorModule,
     NgbModule,
+    MatListModule,
 
     CalendarModule.forRoot({
       provide: DateAdapter,

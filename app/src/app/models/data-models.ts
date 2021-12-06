@@ -7,15 +7,15 @@
 export class Project {
 
   constructor(
-    public _id: number,
+    // public _id: number,
     public pname: string,
     public powner: string,
     public ptype: string, // Instagram Reel, Youtube Video, Tiktok, Other
     public pstartDate: Date,
     public checkPoints: Array<Checkpoint>, // automated 1 week increment
     public pdescription: string,
-    public completed: string,
-    public url: string
+    public pcompleted: string,
+    public purl: string
   ) {  }
 
 }

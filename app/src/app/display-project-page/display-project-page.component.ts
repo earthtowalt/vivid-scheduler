@@ -21,7 +21,7 @@ export class DisplayProjectPageComponent implements OnInit {
     this.projects = [];
     this._ProjectService.getProjects().subscribe(
       response => {
-        console.log(response);
+        // console.log(response);
         // add project names into projects list
         for (let x of response){
           this.projects.push(x.pname);
@@ -36,8 +36,8 @@ export class DisplayProjectPageComponent implements OnInit {
 
   onSubmit(data:any) {
     this._ProjectService.updateProject(data).subscribe(
-      data => console.log(data)
-    )
+      // data => console.log(data)
+    );
   };
     // update project 
 

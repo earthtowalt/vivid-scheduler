@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="menu-wrap">
   <input type="checkbox" class="toggler">
   <div class="hamburger"><div></div></div>
@@ -35,5 +36,35 @@
 
 
 
+=======
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="content">
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item"><a class="nav-link" routerLink="">Home</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="calendar">Calendar</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="gantt-chart">Gantt Chart</a></li>
+      <li *ngIf="currentUser" class="nav-item"><a class="nav-link" routerLink="create-project">Create Project</a></li>
+      <li *ngIf="currentUser" class="nav-item"><a class="nav-link" routerLink="update-project">Update Project</a></li>
+      <li *ngIf="currentUser" class="nav-item"><a class="nav-link" routerLink="display-project">Display Project</a></li>
+      <button
+        *ngIf="!currentUser"
+        type="button"
+        routerLink="login"
+        class="btn btn-outline-primary"
+      >
+        Login
+      </button>
+      <button
+        *ngIf="currentUser"
+        type="button"
+        (click)="logOut()"
+        class="btn btn-outline-primary"
+      >
+        Logout
+      </button>
+    </ul>
+  </div>
+</nav>
+>>>>>>> update working. Data is now normalized from frontend to backend. The update page has basic functionality, but needs a way to modify projects.
 
 <router-outlet></router-outlet>
