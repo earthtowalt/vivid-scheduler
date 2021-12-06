@@ -43,11 +43,10 @@ const createCheckpoints = (startDate) => {
 
 // Create a new project
 router.post("/project", async (req, res) => {
-<<<<<<< HEAD
+
   console.log("beggining of post");
-=======
   //console.log("beggining of post")
->>>>>>> finished this round of server tests
+  //console.log("beggining of post")
   // Schema for project info validation
   const schema = Joi.object({
     pname: Joi.string().required(),
