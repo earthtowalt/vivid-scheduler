@@ -8,7 +8,8 @@ import { Project } from './models/data-models';
 })
 export class CreateProjectService {
 
-  _url = 'http://localhost:8000/'
+  // _url = 'http://localhost:8000/';
+  _url = "";
   constructor(private _http: HttpClient) { }
 
   // make a post request to the server   
