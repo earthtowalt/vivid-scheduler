@@ -6,4 +6,7 @@ About: This project is an artistic scheduler for VIVID, Vanderbilt's premier KPO
 Framework: Our system archicture will model the MeanStack. Our front end will be written with the Angular framework. 
 
 # Development Server
-First start up server. Then start up front end.
+First, clone the repo. Connect to port 27017, and start up server in /server. Then, start up front end in /app.
+
+# Website
+Go to vividvisualiser.com to see our deployed website. 

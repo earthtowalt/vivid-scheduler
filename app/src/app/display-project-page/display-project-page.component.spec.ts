@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DisplayProjectPageComponent } from './display-project-page.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 
 describe('DisplayProjectPageComponent', () => {
   let component: DisplayProjectPageComponent;
@@ -8,7 +9,8 @@ describe('DisplayProjectPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DisplayProjectPageComponent ]
+      declarations: [ DisplayProjectPageComponent ], 
+      imports: [ HttpClientTestingModule, FormsModule ]
     })
     .compileComponents();
   });
