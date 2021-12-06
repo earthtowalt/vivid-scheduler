@@ -130,7 +130,7 @@ router.post("/login", async (req, res) => {
   try {
     let data = await schema.validateAsync(req.body);
     console.log(data);
-    if (data.password === "p") {
+    if (data.password === "sophia123") {
       return res.status(201).send({ user: "admin" });
     }
     return res.status(400).send({ error: "Password is incorrect" });
