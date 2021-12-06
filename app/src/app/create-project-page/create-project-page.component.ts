@@ -32,7 +32,7 @@ export class CreateProjectPageComponent implements OnInit {
     // create checkpoint list based on startDate
     // increment each checkpoint by 1 week
     let myStartDate = new Date(data.startDate)
-    data.checkPoints = [new Checkpoint(data.pname, data.pname + ' Checkpoint 1', myStartDate), new Checkpoint(data.pname, data.pname + ' Checkpoint 2', new Date(myStartDate.getDate() + 7))]
+    data.pcheckpoints = [new Checkpoint(data.pname, data.pname + ' Checkpoint 1', myStartDate), new Checkpoint(data.pname, data.pname + ' Checkpoint 2', new Date(myStartDate.getDate() + 7))]
 
     // update project object for this specific form submission to match input data
     this.projectModel.pname = data.pname
@@ -40,7 +40,7 @@ export class CreateProjectPageComponent implements OnInit {
     this.projectModel.ptype = data.ptype
     this.projectModel.pstartDate = data.pstartDate
     this.projectModel.pdescription = data.pdescription
-    this.projectModel.checkPoints = data.checkPoints
+    this.projectModel.pcheckpoints = data.pcheckpoints
     this.projectModel.pcompleted = 'No'
     this.projectModel.purl = ' '
 

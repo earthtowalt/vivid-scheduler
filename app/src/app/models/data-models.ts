@@ -12,7 +12,7 @@ export class Project {
     public powner: string,
     public ptype: string, // Instagram Reel, Youtube Video, Tiktok, Other
     public pstartDate: Date,
-    public checkPoints: Array<Checkpoint>, // automated 1 week increment
+    public pcheckpoints: Array<Checkpoint>, // automated 1 week increment
     public pdescription: string,
     public pcompleted: string,
     public purl: string

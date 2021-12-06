@@ -5,7 +5,7 @@
         "powner": "test owner",
         "ptype": "Instagram Reel",
         "startDate": "11/11/2021",
-        "checkPoints": [],
+        "pcheckpoints": [],
         "description": "test description",
         "completed": "No",
         "url": ""

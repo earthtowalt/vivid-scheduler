@@ -41,13 +41,8 @@ export class HomePageComponent implements OnInit {
 
         console.log(response);
         for (let x of this.projects){
-<<<<<<< HEAD
-          if (x.completed == "Yes"){
-            let newUrl = x.url.substring(33)
-=======
           if (x.pcompleted == "Yes"){
             let newUrl = x.purl.substring(32)
->>>>>>> update working. Data is now normalized from frontend to backend. The update page has basic functionality, but needs a way to modify projects.
             //Adding onto our array of events
             this.completedEvents = [
               ...this.completedEvents, {

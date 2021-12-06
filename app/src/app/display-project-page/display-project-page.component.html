@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="card showcase">
     <div class="container showcase-inner card-body" style="margin-left: 100px; margin-top:-400px;">
         <h4 class="heading card-title">Add New Project to Display</h4>
@@ -13,32 +12,11 @@
                     
                 <div class="form-group">
                     <label for="owner">Project Video Link:</label>
-                    <input type="text" class="form-control" id="owner" name="url" minlength="1" [(ngModel)]="projectURL">
+                    <input type="text" class="form-control" id="owner" name="purl" minlength="1" [(ngModel)]="projectURL">
                 </div>
-=======
-<h1 class="heading">Add New Project to Display</h1>
-<form #displayProjectForm="ngForm" (ngSubmit)="onSubmit(displayProjectForm.value)">
-    <div class="form-container">
-        <div class="form-group">
-            <label for="name">Project Name:</label>
-            <select class="form-control project-select" id="type" name="pname" minlength="1" required [(ngModel)]="projectName">
-                <option *ngFor="let projectName of projects" [value]="projectName">{{projectName}}</option>
-                </select>
-        </div>
-            
-        <div class="form-group">
-            <label for="owner">Project Video Link:</label>
-            <input type="text" class="form-control" id="owner" name="purl" minlength="1" [(ngModel)]="projectURL">
-        </div>
->>>>>>> update working. Data is now normalized from frontend to backend. The update page has basic functionality, but needs a way to modify projects.
 
             </div>
             <button class="project-submit-button btn-primary" type="submit">Submit</button>
         </form>
     </div>
-<<<<<<< HEAD
 </div>
-=======
-    <button class="project-submit-button" type="submit" onclick="alert('Successful Submission!');">Submit</button>
-</form>
->>>>>>> update working. Data is now normalized from frontend to backend. The update page has basic functionality, but needs a way to modify projects.

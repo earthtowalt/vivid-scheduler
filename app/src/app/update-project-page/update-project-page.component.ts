@@ -5,8 +5,6 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Observable } from 'rxjs';
 
-
-
 @Component({
   selector: 'app-update-project-page',
   templateUrl: './update-project-page.component.html',
@@ -14,8 +12,6 @@ import { Observable } from 'rxjs';
 })
 
 export class UpdateProjectPageComponent implements OnInit {
-
-  submitted: boolean;
 
   projects: Observable<Project[]>;
 
@@ -38,23 +34,18 @@ export class UpdateProjectPageComponent implements OnInit {
 
   // when selection is made, pop up 
 
-  open(content: any, selectedProject: Project) {
+  open(content: any, project: Project) {
+    this.selectedProject = project;
+
     this.modalService.open(content, {ariaLabelledBy: 'modal-update-title'}).result.then((result) => {
       if (result === 'save') {
-
-        alert('project sucessfully updated.');
+        console.log('calling projectservice: ' + JSON.stringify(this.selectedProject));
+        let res = this._ProjectService.changeProject(this.selectedProject);
+        res.subscribe();
       }
     }, (reason) => {
       // if the modal is closed unexpectedly
+      console.log('error: ' + reason);
     });
   }
-
-  // onSubmit to 
-  onSubmit(data: any) {
-    this.submitted = true;
-    console.log("submitted: " + JSON.stringify(data));
-    alert("submitted: " + JSON.stringify(data));
-  }
-
-
 }

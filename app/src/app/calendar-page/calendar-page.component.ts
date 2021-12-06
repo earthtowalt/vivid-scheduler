@@ -46,11 +46,11 @@ export class CalendarPageComponent implements OnInit {
         for (let x of this.projects){
           //The client's don't have specific times within the day for deadlines, so we're 
           // setting the hours to zero so everything is standard. 
-          // console.log(x.checkpoints);
-          // console.log(x.checkpoints[0].date)
-          // console.log(x.checkpoints[0].title)
+          console.log(x.pcheckpoints);
+          console.log(x.pcheckpoints[0].cdate)
+          console.log(x.pcheckpoints[0].cname)
 
-          for (let y of x.checkPoints){
+          for (let y of x.pcheckpoints){
             var projDate = new Date(y.cdate);
             projDate.setHours(0, 0, 0, 0);
   

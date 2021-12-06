@@ -48,7 +48,7 @@ router.post("/project", async (req, res) => {
     powner: Joi.string(),
     ptype: Joi.string(),
     pstartDate: Joi.date().required(),
-    checkPoints: Joi.array(),
+    pcheckpoints: Joi.array(),
     pdescription: Joi.string(),
     pcompleted: Joi.string(),
     purl: Joi.string(),
@@ -91,20 +91,6 @@ router.put('/project', function(req, res) {
 
 // Update a Project
 router.put('/update-project', function(req, res) {
-  
-  // const schema = Joi.object({
-  //   pname: Joi.string().required(),
-  //   powner: Joi.string(),
-  //   ptype: Joi.string(),
-  //   startDate: Joi.date().required(),
-  //   checkPoints: Joi.array(),
-  //   description: Joi.string(),
-  //   completed: Joi.string(),
-  //   url: Joi.string(),
-  // });
-
-  // let data = await schema.validateAsync(req.body);
-  // console.log('update: ' + JSON.stringify(data));
   
   const data = req.body;
   console.log('PUT update-project: ' + data.pname);
