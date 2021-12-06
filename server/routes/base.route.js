@@ -19,6 +19,7 @@ router.get("/projects", function (req, res) {
 
 // add checkpoints
 const createCheckpoints = (startDate) => {
+  console.log('startDate: ' + typeof startDate + ' ' + JSON.stringify(startDate));
   const numWeeks = 2;
   const titles = [
     "filming",
@@ -94,6 +95,7 @@ router.put('/update-project', function(req, res) {
       powner:data.powner, 
       ptype:data.ptype,
       startDate:data.startDate,
+      checkpoints:createCheckpoints(new Date(data.startDate)),
       description:data.description,
     }}, function(err, doc){
     if(err){
