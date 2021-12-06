@@ -24,4 +24,9 @@ export class ProjectService {
   updateProject(projectName: any) {
     return this.http.put<any>(this.rootURL + 'api/project', projectName);
   }
+
+  // actually update a project....
+  changeProject(project: Project) {
+    return this.http.put<any>(this.rootURL + 'api/update-project', project);
+  }
 }

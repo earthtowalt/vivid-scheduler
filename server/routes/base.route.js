@@ -84,6 +84,25 @@ router.put('/project', function(req, res) {
   });
 });
 
+// Update a Project
+router.put('/update-project', function(req, res) {
+  
+  const data = req.body;
+  console.log('PUT update-project: ' + data);
+  
+  curProject = Project.findOneAndUpdate({pname: data.pname}, {$set:{
+      powner:data.powner, 
+      ptype:data.ptype,
+      startDate:data.startDate,
+      description:data.description,
+    }}, function(err, doc){
+    if(err){
+      console.log("Something went wrong - " + err);
+    }
+  });
+
+});
+
 // Create a new admin
 router.post("/login", async (req, res) => {
   // Schema for admin info validation
